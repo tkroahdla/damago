@@ -195,5 +195,4 @@ public class DamaDAO {
 		}
 		return dama_list;
 	}
-	
 }
