@@ -20,9 +20,13 @@ public class MemberDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-			String user = "campus_d_6_0115";
-			String password = "smhrd6";
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String user = "hr";
+			String password = "hr";
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+//			String user = "campus_d_6_0115";
+//			String password = "smhrd6";
 
 			conn = DriverManager.getConnection(url, user, password);
 
@@ -47,15 +51,15 @@ public class MemberDAO {
 		}
 	}
 
-	public String Login() {
-		connect();
-		
-		String SQL = "Select id, password From user_info where id = ?";
-
-		String id = getStrInput("ID :  ");
-		int pw = getNumInput("PASSWORD :  ");
-
+	public int Login() {
+	
 		try {
+			connect();
+			
+			String SQL = "Select id, password From user_info where id = ?";
+
+			String id = getStrInput("ID :  ");
+			int pw = getNumInput("PASSWORD :  ");
 			pst = conn.prepareStatement(SQL);
 			pst.setString(1, id);
 
@@ -65,16 +69,16 @@ public class MemberDAO {
 
 				if (rs.getInt(2) == pw) {
 
-					return id; // 로그인 성공
+					return 0; // 로그인 성공
 				} else
-					return null; // 비밀번호 불일치
+					return 1; // 비밀번호 불일치
 			}
 		} catch (Exception e) {
 			e.printStackTrace(); // 예외처리
 		}finally {
 			close();
 		}
-		return null;
+		return 1;
 	}
 	
 	public boolean insertMember() {
