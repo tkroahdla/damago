@@ -35,7 +35,7 @@ public class View {
 				System.out.println("\n=====로 그 인=====");
 				String login = mem.Login();
 				
-				if (login == 1) {
+				if (login != null) {
 					System.out.println("로그인 성공!!");
 					System.out.println("==================");
 					
@@ -66,10 +66,7 @@ public class View {
 						
 					}
 
-				} else if (login == 0) {
-					System.out.println("비밀번호 틀렸어요!");
-				} else if (login == -1) {
-					System.out.println("아이디가 없어요!");
+				
 				} else {
 					System.out.println("데이터베이스 오류");
 				}
