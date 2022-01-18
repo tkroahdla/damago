@@ -127,8 +127,9 @@ public class View {
 			//User 회원가입
 			}else if(game_menu==2) {
 				mem.insertMember(id, pw);
+				boolean check2= true ;
 				
-				//User 회원가입 성공
+				//User 회원가입 성공 
 				if(check2==true) {
 					System.out.println("회원가입 성공!!");
 					
