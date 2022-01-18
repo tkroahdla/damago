@@ -1,5 +1,5 @@
 package Controller;
 
-public class Controller {
+public class JDBC_Controller {
 	private int test;
 }
