@@ -1,57 +1,44 @@
 package Model;
 
 public class MemberDTO {
-	private String id;
-
-	private String pw;
-
-	private String type;
 	
+	// species => type 으로 변경
+	// 다마고치 별명 => nick 추가 
+	private String id;
+	private String pw;
+	private String type;
 	private String nick;
 	
 	
-
 	
 	public String getId() {
-
 		return id;
-
 	}
 
 	public void setId(String id) {
-
 		this.id = id;
-
 	}
 
 	
 
 	public String getPw() {
-
 		return pw;
-
 	}
 
 	public void setPw(String pw) {
-
 		this.pw = pw;
-
 	}
 
 	
 
 	public String getType() {
-
 		return type;
-
 	}
 
 
 
 	public void setType(String type) {
-
 		this.type = type;
-
 	}
 	
 	public String getNick() {
