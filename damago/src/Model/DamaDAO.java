@@ -1,5 +1,4 @@
 package Model;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,20 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DamaDAO {
-	// 전역변수로 선언
 	Connection conn = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
-
-	// DB 연결 메소드
 	public void connect() {
 		try {
-			// ClassNotFoundException 발생할 수 있음
-			// 해결방법1. 프로젝트에 ojdbc 라이브러리를 추가하였는지 확인
-			// 해결방법2. 오타 확인
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			// 2. 사용할 계정 선택, DB와 연결할 객체(Connection) 생성
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_d_6_0115";
 			String password = "smhrd6";
@@ -32,8 +24,6 @@ public class DamaDAO {
 		}
 	}
 
-	// 연결 종료 메소드
-	// 사용한 객체들 반환
 	public void close() {
 		// 객체들 마무리(Connection, PreparedStatement, ResultSet)
 		try {
@@ -54,18 +44,15 @@ public class DamaDAO {
 	}
 
 	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
-	public boolean insertDama(String nick, String type, int exp, int level, int energy, String id, String date) {
-		// JAVA - Oracle DB를 연결해 줄 JDBC java api 사용
+	public boolean insertDama(String nick, String type, int exp, int level, int energy, String id) {
 
 		boolean check = false;
 
 		try {
-			// 1. Oracle JDBC driver을 동적로딩(= Oracle DB와 연결 선언)
 			connect();
-
 			// 3. 실행할 SQL문(String으로) 정의
 			// ? : 바인드 변수(변해야 하는 값을 ?로 정의)
-			String sql = "insert into DAMA values(Dama_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sys_date, ?)";
 
 			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
 			// prepareStatement(정의할 sql);
@@ -83,6 +70,8 @@ public class DamaDAO {
 			pst.setInt(3, exp);
 			pst.setInt(4, level);
 			pst.setInt(5, energy);
+			pst.setString(6,"meal" );
+			
 
 			// 6. SQL문 실행하여 결과 처리
 			// executeUpdate() : insert, delete, update -> table상에 변화가 일어남
