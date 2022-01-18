@@ -24,6 +24,12 @@ public class View {
 		String id;
 		String pw;
 		
+<<<<<<< HEAD
+=======
+		//mem.Login();
+		mem.insertMember("제동현",123123);
+		/*
+>>>>>>> branch 'master' of https://github.com/tkroahdla/damago.git
 		//메인 페이지 메뉴선택
 		while(true) {
 			System.out.print("메뉴선택 >> ");

@@ -44,8 +44,9 @@ public class DamaDAO {
 	}
 
 	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
-	public boolean insertDama(String nick, String type, int exp, int level, int energy, String id) {
-
+	public boolean insertDama(String nick, String type) {
+// 생성시 필수적으로 필요한 인자들 ??
+//nick type , int exp, int level, int energy, String id 제외
 		boolean check = false;
 
 		try {
@@ -58,25 +59,19 @@ public class DamaDAO {
 			// prepareStatement(정의할 sql);
 			pst = conn.prepareStatement(sql);
 
-			// 경험치, 레벨, 에너지, 아이디 초기값 지정?
-			exp = 0;
-			level = 1;
-			energy = 0;
+			int exp = 0;
+			int level = 1;
+			int energy = 0;
 
-			// 5. 바인드 변수를 채우기
-			// pst.set변수형(바인드변수의 순번, 채울 것)
 			pst.setString(1, nick);
 			pst.setString(2, type);
 			pst.setInt(3, exp);
 			pst.setInt(4, level);
 			pst.setInt(5, energy);
-			pst.setString(6,"meal" );
+		//	pst.setString(6, id );
+			pst.setString(7,"meal" );
 			
 
-			// 6. SQL문 실행하여 결과 처리
-			// executeUpdate() : insert, delete, update -> table상에 변화가 일어남
-			// 반환값 : int(-> table상에서 몇개의 행이 수정되었는지 반환)
-			// 수정이 제대로 일어난 경우 항상 0보다 큰 값을 반환함
 			int cnt = pst.executeUpdate();
 
 			if (cnt > 0) { // 추가 성공
@@ -105,6 +100,7 @@ public class DamaDAO {
 			connect();
 
 			// 3. 실행할 SQL문 정의
+
 			// order by를 넣어야 할건데 기준을 뭐로 잡을지를 정하지 않았으니 일단 생략
 			String sql = "select * from dama";
 
