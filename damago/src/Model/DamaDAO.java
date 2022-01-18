@@ -54,7 +54,7 @@ public class DamaDAO {
 	}
 
 	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
-	public boolean insertPet(String nick, String species, int exp, int level, int energy, String id, String date) {
+	public boolean insertDama(String nick, String type, int exp, int level, int energy, String id, String date) {
 		// JAVA - Oracle DB를 연결해 줄 JDBC java api 사용
 
 		boolean check = false;
@@ -79,7 +79,7 @@ public class DamaDAO {
 			// 5. 바인드 변수를 채우기
 			// pst.set변수형(바인드변수의 순번, 채울 것)
 			pst.setString(1, nick);
-			pst.setString(2, species);
+			pst.setString(2, type);
 			pst.setInt(3, exp);
 			pst.setInt(4, level);
 			pst.setInt(5, energy);
