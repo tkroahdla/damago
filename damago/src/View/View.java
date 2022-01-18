@@ -33,7 +33,7 @@ public class View {
 			// User 로그인
 			if (game_menu == 1) {
 				System.out.println("\n=====로 그 인=====");
-				int login = mem.Login();
+				String login = mem.Login();
 				
 				if (login == 1) {
 					System.out.println("로그인 성공!!");
@@ -56,7 +56,7 @@ public class View {
 						}else if(dama_menu==4) {
 							System.out.println("뒤로가기");
 						}
-						
+						System.out.println("   ");
 						
 						
 						
