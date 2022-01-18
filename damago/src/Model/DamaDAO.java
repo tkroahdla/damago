@@ -1,5 +1,4 @@
 package Model;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,7 +44,7 @@ public class DamaDAO {
 	}
 
 	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
-	public boolean insertDama(String nick, String type, int exp, int level, int energy, String id, String date) {
+	public boolean insertDama(String nick, String type, int exp, int level, int energy, String id) {
 
 		boolean check = false;
 
@@ -53,7 +52,7 @@ public class DamaDAO {
 			connect();
 			// 3. 실행할 SQL문(String으로) 정의
 			// ? : 바인드 변수(변해야 하는 값을 ?로 정의)
-			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sys_date, ?)";
 
 			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
 			// prepareStatement(정의할 sql);
@@ -72,6 +71,7 @@ public class DamaDAO {
 			pst.setInt(4, level);
 			pst.setInt(5, energy);
 			pst.setString(6,"meal" );
+			
 
 			// 6. SQL문 실행하여 결과 처리
 			// executeUpdate() : insert, delete, update -> table상에 변화가 일어남
