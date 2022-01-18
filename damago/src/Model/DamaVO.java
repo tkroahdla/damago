@@ -2,7 +2,7 @@ package Model;
 
 
 
-public class PetVO {
+public class DamaVO {
 	//필드 :  별명,종류,경험치,레벨,포만감,에너지
 	
 	private String nick; //별명
@@ -16,7 +16,7 @@ public class PetVO {
 	
 
 	
-	public	PetVO(String nick, String species, int exp, int level,int energy,String id, String date) {
+	public	DamaVO(String nick, String species, int exp, int level,int energy,String id, String date) {
 		super();// 부모클래스의 생성자 호출 (기본생성자)
 		this.nick = nick;
 		this.species = species;
