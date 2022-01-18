@@ -11,8 +11,8 @@ import Model.MemberDAO;
 public class View {
 	
 	public static void main(String[] args) {
-		String id;
-		String pw;
+		String id = null;
+		int pw = 0;
 		DamaDAO dama = new DamaDAO();
 		MemberDAO mem = new MemberDAO();
 		int input = 0;
@@ -26,18 +26,12 @@ public class View {
 		int dama_menu;
 
 		//메인 페이지 메뉴선택
-		while(true) {
-		int dama_menu;
-		String id = null;
-		int pw = 0;
-
 		while (true) {
 			System.out.print("메뉴선택 >> ");
 			game_menu = sc.nextInt();
 			// User 로그인
 			if (game_menu == 1) {
 				System.out.println("\n=====로 그 인=====");
-				mem.Login(id, pw);
 				int login = mem.Login();
 				if (login == 1) {
 					System.out.println("로그인 성공!!");
@@ -52,7 +46,7 @@ public class View {
 				System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹");
 				System.out.println("===========================");
 
-			//User 회원가입
+
 				
 				//User 회원가입 성공 
 			//	if(check2==true) {
@@ -113,18 +107,6 @@ public class View {
 				 */
 
 				// User 회원가입
-			} else if (game_menu == 2) {
-				mem.insertMember();
-				boolean check2 = true;
-
-				// User 회원가입 성공
-				if (check2 == true) {
-					System.out.println("회원가입 성공!!");
-
-					// User 회원가입 실패
-				} else {
-					System.out.println("회원가입 실패..");
-				}
 			} else if (game_menu == 2) {
 				mem.insertMember();
 				boolean check2 = true;
