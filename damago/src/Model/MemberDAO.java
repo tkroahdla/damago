@@ -47,10 +47,6 @@ public class MemberDAO {
 		}
 	}
 
-	public boolean insertMember(String id, String pw) {
-		
-	}
-
 	public int Login() {
 		connect();
 		
