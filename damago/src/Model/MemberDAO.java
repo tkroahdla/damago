@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
  
@@ -123,11 +122,6 @@ public class MemberDAO {
     private String getStrInput(String msg) {
         System.out.println(msg);
         return sc.nextLine();        
-    }
- 
-    private int menu() {
-        System.out.println("다마고치");
-        return getNumInput("[1]로그인 [2]회원가입 [3]랭크 [0]종료");
     }
  
     private int getNumInput(String msg) {
