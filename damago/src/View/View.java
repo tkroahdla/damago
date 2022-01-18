@@ -34,7 +34,7 @@ public class View {
 				System.out.println("\n=====로 그 인=====");
 				int login = mem.Login();
 				if (login == 1) {
-					System.out.println("로그인 성공!!");
+					System.out.println("로그인 성공!! ");
 				} else if (login == 0) {
 					System.out.println("비밀번호 틀렸어요!");
 				} else if (login == -1) {
