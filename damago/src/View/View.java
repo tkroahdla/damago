@@ -53,6 +53,7 @@ public class View {
 							break;
 						}
 						
+						
 					}
 
 				} else {
@@ -202,4 +203,13 @@ public class View {
 
 	}
 
+	public void startpic() {
+		System.out.println();
+		System.out.println(",--------.                                         ,--.        ,--.     ,--.    "); 
+		System.out.println("'--.  .--',--,--.,--,--,--. ,--,--. ,---.  ,---. ,-'  '-. ,---.|  ,---. `--'    "); 
+		System.out.println("   |  |  ' ,-.  ||        |' ,-.  || .-. || .-. |'-.  .-'| .--'|  .-.  |,--.    "); 
+		System.out.println("   |  |  \\ '-'  ||  |  |  |\\ '-'  |' '-' '' '-' '  |  |  \\ `--.|  | |  ||  | ");
+		System.out.println("   `--'   `--`--'`--`--`--' `--`--'.`-  /  `---'   `--'   `---'`--' `--'`--'    ");
+		System.out.println("                                   `---'                                        ");
+	}
 }
