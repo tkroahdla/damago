@@ -1,10 +1,12 @@
 package Model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DamaDAO {
 	// 전역변수로 선언
@@ -51,7 +53,7 @@ public class DamaDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// 사용자가 입력한 값을 USER_INFO에 삽입(회원가입)
 	public boolean insertMember(String id, int pw) {
 		// JAVA - Oracle DB를 연결해 줄 JDBC java api 사용
@@ -98,9 +100,9 @@ public class DamaDAO {
 		}
 		return check;
 	}
-	
+
 	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
-	public boolean insertPet(String nick, String species, int num) {
+	public boolean insertPet(String nick, String species, int exp, int level, int energy, String id, String date) {
 		// JAVA - Oracle DB를 연결해 줄 JDBC java api 사용
 
 		boolean check = false;
@@ -111,21 +113,24 @@ public class DamaDAO {
 
 			// 3. 실행할 SQL문(String으로) 정의
 			// ? : 바인드 변수(변해야 하는 값을 ?로 정의)
-			String sql = "insert into DAMA values(Dama_SEQ.nextval, ?, ?, ?)";
+			String sql = "insert into DAMA values(Dama_SEQ.nextval, ?, ?, ?, ?, ?,?,?)";
 
 			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
 			// prepareStatement(정의할 sql);
 			pst = conn.prepareStatement(sql);
 
-			// 초기값
-			num = 0;
-			
+			// 경험치, 레벨, 에너지, 아이디 초기값 지정?
+			exp = 0;
+			level = 1;
+			energy = 0;
+
 			// 5. 바인드 변수를 채우기
 			// pst.set변수형(바인드변수의 순번, 채울 것)
 			pst.setString(1, nick);
 			pst.setString(2, species);
-			pst.setInt(3, num);
-			
+			pst.setInt(3, exp);
+			pst.setInt(4, level);
+			pst.setInt(5, energy);
 
 			// 6. SQL문 실행하여 결과 처리
 			// executeUpdate() : insert, delete, update -> table상에 변화가 일어남
@@ -149,5 +154,49 @@ public class DamaDAO {
 			close();
 		}
 		return check;
+	}
+
+	public ArrayList<PetVO> selectPet() {
+
+		ArrayList<PetVO> P_list = new ArrayList<PetVO>();
+
+		try {
+			connect();
+
+			// 3. 실행할 SQL문 정의
+			String sql = "select * from dama";
+
+			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
+			// prepareStatement(정의할 sql);
+			pst = conn.prepareStatement(sql);
+
+			// 바인드 변수 없음 -> 바로 실행 가능
+			// 5. sql문을 실행하고 결과 처리
+			// executeQuery : select -> 검색(table상에 변화가 일어나지 않음)
+			// 반환타입 : ResultSet이라는 객체를 반환
+			rs = pst.executeQuery();
+
+			// dama 테이블의 값을 읽어서 출력
+			while (rs.next()) {
+				int num = rs.getInt(1); // 커서가 가리키고 있는 행의 첫번째 column값을 읽어옴
+				String nick = rs.getString("nick");
+				String type = rs.getString("type");
+				int exp = rs.getInt("exp");
+				int energy = rs.getInt("energy");
+				String id = rs.getString("id");
+				String date = rs.getString("date");
+
+				// 위에서 읽어온 값들로 초기화시켜 생성한 PetVO 객체의 참조값을
+				// ArrayList에 추가
+				P_list.add(new PetVO(type, nick, num, exp, energy, id, date));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 객체들 마무리(Connection, PreparedStatement, ResultSet)
+			close();
+		}
+		return P_list;
 	}
 }
