@@ -11,18 +11,18 @@ public class View {
 
 	public static void main(String[] args) {
 		
-		DamaDAO dama = new DamaDAO(); //?
+		DamaDAO dama = new DamaDAO();
 		MemberDAO mem = new MemberDAO();
+		
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("===== 다마고찌 키우기 게임 =====");
 		System.out.println("1.로그인\n2.회원가입\n3.게임종료");
 		System.out.println("==========================");
 		int game_menu;
+		int dama_menu;
+
 		
-		mem.Login();
-		
-		/*
 		//메인 페이지 메뉴선택
 		while(true) {
 			System.out.print("메뉴선택 >> ");
@@ -30,24 +30,14 @@ public class View {
 			
 			//User 로그인
 			if(game_menu==1) {
-				System.out.println("로그인");
-				System.out.print("아이디 : ");
-				String user_name = sc.next();
-				System.out.print("비밀번호 : ");
-				String user_password = sc.next();
+				System.out.println("\n=====로 그 인=====");
+				mem.Login(null, null);
 
-				boolean check = dama.selectuser(user_name, user_password);
-				
-				//User 로그인 성공
-				if(check==true) {
-					System.out.println("로그인 성공!!");
-					
-					System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹");
-					System.out.println("===========================");
+				System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹");
+				System.out.println("===========================");
 			
-					int dama_menu;
 					
-					//다마고찌 관리 메뉴선택
+/*					//다마고찌 관리 메뉴선택
 					while(true) {
 						System.out.print("메뉴선택 >> ");
 						dama_menu = sc.nextInt();
@@ -132,21 +122,11 @@ public class View {
 							System.out.println("===========================");
 						}
 					}
-					
-				// User 로그인 실패	
-				}else {
-					System.out.println("로그인 실패..\n아이디 혹은 비밀번호를 잘못입력했습니다. 다시 입력해주세요");
-				}
-			
+*/					
+
 			//User 회원가입
 			}else if(game_menu==2) {
-				System.out.println("회원가입");
-				System.out.print("아이디 : ");
-				String name = sc.next();
-				System.out.print("비밀번호 : ");
-				String password = sc.next();
-
-				boolean check2 = dama.insertuser(name, password);
+				mem.insertMember(id, pw);
 				
 				//User 회원가입 성공
 				if(check2==true) {
@@ -156,7 +136,7 @@ public class View {
 				}else {
 					System.out.println("회원가입 실패..");
 				}
-				
+			
 			//게임 종료
 			}else if(game_menu==3) {
 				System.out.println("게임 종료");
@@ -165,7 +145,7 @@ public class View {
 				System.out.println("잘못입력했습니다. 다시 입력해주세요.");
 			}
 		
-		}*/
+		}
 		
 	}
 
