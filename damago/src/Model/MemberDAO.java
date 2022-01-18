@@ -96,10 +96,9 @@ public class MemberDAO {
     }
  
     public void Login() {
-        
+        sc.nextLine();
         String id = getStrInput("      ID : ");
         String pw = getStrInput("PassWord : ");
-    
         
         MemberDTO member = FindById(id);
        
