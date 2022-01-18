@@ -21,10 +21,13 @@ public class MemberDAO {
 		try {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "hr";
-			String password = "hr";
+
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+			String user = "campus_d_6_0115";
+			String password = "smhrd6";
+
 			conn = DriverManager.getConnection(url, user, password);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,8 +55,7 @@ public class MemberDAO {
 		String search = "";
 		try {
 			connect();
-
-			String sql = "insert into Member values(stdseq.nextval,?,?)";
+			String sql = "insert into user_info values (?,?)";
 
 			pst = conn.prepareStatement(sql);
 
@@ -77,12 +79,9 @@ public class MemberDAO {
 		}
 
 		return check;
-<<<<<<< HEAD
-	}
-
-	private void Rank() {
 
 	}
+
 
 	private boolean idCheck(String id) {// 아이디체크
 		boolean check = true;
@@ -132,6 +131,32 @@ public class MemberDAO {
 		return null;
 	}
 
+
+	private void Rank() {
+	}
+
+
+	int game_menu;
+
+	public void Login() {
+		System.out.print("메뉴선택 >> ");
+		game_menu = sc.nextInt();
+
+		String id = getStrInput("      ID : ");
+		String pw = getStrInput("PassWord : ");
+
+		MemberDTO member = FindById(id);
+
+		if (member == null) {
+			System.out.println("등록되지 않은 ID입니다.");
+		} else if (member.getPw().equals(pw)) { // 아이디 비번 모두 맞았을때
+			System.out.println("[" + member.getId() + "]님께서 로그인 하셨습니다.");
+		} else {
+			System.out.println("비밀번호가 틀렸습니다.");
+		}
+	}
+
+
 	private String getStrInput(String msg) {
 		System.out.println(msg);
 		return sc.nextLine();
@@ -142,57 +167,4 @@ public class MemberDAO {
 		return sc.nextInt();
 	}
 
-=======
-    }
-
-    private void Rank() {
-    }
-      
-    private boolean idCheck(String id) {//아이디체크
-        boolean check = true;
-        MemberDTO member = FindById(id);
-        if(member == null)
-            check = false;
-        return check;
-    }
- 
-    int game_menu;
-    public void Login() {
-    	System.out.print("메뉴선택 >> ");
-		game_menu = sc.nextInt();
-    	
-        String id = getStrInput("      ID : ");
-        String pw = getStrInput("PassWord : ");
-        
-        MemberDTO member = FindById(id);
-       
-        if(member == null){
-            System.out.println("등록되지 않은 ID입니다."); 
-        }else if(member.getPw().equals(pw)) { // 아이디 비번 모두 맞았을때
-            System.out.println("[" + member.getId() + "]님께서 로그인 하셨습니다.");
-        }else {
-            System.out.println("비밀번호가 틀렸습니다.");
-        }
-    }
- 
-    private MemberDTO FindById(String id) {
-        for(MemberDTO memberDTO : members) {
-            if(memberDTO.getId().equals(id)) {
-                return memberDTO;
-            }
-        }
-        return null;
-    }
- 
-    private String getStrInput(String msg) {
-        System.out.println(msg);
-        return sc.nextLine();        
-    }
- 
-    private int getNumInput(String msg) {
-        System.out.println(msg);
-        return sc.nextInt();
-    }
- 
->>>>>>> branch 'master' of https://github.com/tkroahdla/damago
 }

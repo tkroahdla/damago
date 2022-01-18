@@ -20,8 +20,8 @@ public class View {
 		System.out.println("==========================");
 		int game_menu;
 		
-		mem.Login();
-		
+		//mem.Login();
+		mem.insertMember("제동현",123123);
 		/*
 		//메인 페이지 메뉴선택
 		while(true) {
