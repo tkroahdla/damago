@@ -16,10 +16,9 @@ public class View {
 		MemberDAO mem = new MemberDAO();
 		int input = 0;
 		Scanner sc = new Scanner(System.in);
-
 		int game_menu;
 		int dama_menu;
-
+		String login = 0;
 		// 메인 페이지 메뉴선택
 		while (true) {
 			System.out.println("===== 다마고찌 키우기 게임 =====");
@@ -30,7 +29,7 @@ public class View {
 			// User 로그인
 			if (game_menu == 1) {
 				System.out.println("\n=====로 그 인=====");
-				String login = mem.Login();
+				login = mem.Login();
 				if (login != null) {
 					System.out.println("로그인 성공!!");
 					// 여기부터 게임진행
@@ -78,6 +77,56 @@ public class View {
 			String dama_name = sc.next();
 			System.out.print("종류 : "); // 속성은 어떤 종류가 있는걸로 할 것인지
 			String dama_type = sc.next();
+		}
+//			// User 로그인
+//			if (game_menu == 1) {
+//				System.out.println("\n=====로 그 인=====");
+//				login = mem.Login();
+
+//				if (!login.equals()) {
+//					System.out.println("로그인 성공!!");
+//					// 여기부터 게임진행
+//					while (true) {
+//
+//						System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹\n4.뒤로 가기");
+//						System.out.println("===========================");
+//						dama_menu = sc.nextInt();
+//						
+//						if(dama_menu==1) {
+//							System.out.println("다마고찌 등록");
+//							dama.insertDama(login);
+//						}else if(dama_menu==2) {
+//							System.out.println("다마고찌 관리");
+//						}else if(dama_menu==3) {
+//							System.out.println("다마고찌 랭킹");
+//						}else if(dama_menu==4) {
+//							System.out.println("뒤로가기");
+//						}
+//					}
+//
+//			
+//		
+//			
+//			} else if (game_menu == 2) {
+//				mem.insertMember();
+//			}
+//
+//			else {
+//				System.out.println("게임 종료");
+//				break;
+//			}
+//	}
+//
+//	// if(check2==true) {
+//
+//	// 다마고찌 관리 메뉴선택 while(true) { System.out.print("메뉴선택 >> "); dama_menu =
+//	sc.nextInt();
+//
+//	// 다마고찌 등록 if(dama_menu==1) { System.out.println("다마고찌 등록");
+//	System.out.println("등록할 다마고찌 정보를 입력하세요.");System.out.print("이름 : ");
+//
+//	String dama_name = sc.next();System.out.print("종류 : "); // 속성은 어떤 종류가 있는걸로 할 것인지
+//	String dama_type = sc.next();
 
 //				  boolean check3 = dama.insertdama(dama_name, dama_type);
 //				  
@@ -125,7 +174,7 @@ public class View {
 //				  System.out.println("5등 : " + vo.); }
 //				  System.out.println("==========================="); } }
 
-			// User 회원가입
+		// User 회원가입
 //			} else if (game_menu == 2) {
 //				mem.insertMember();
 //				boolean check2 = true;
@@ -149,6 +198,6 @@ public class View {
 //				System.out.println("잘못입력했습니다. 다시 입력해주세요.");
 //			}
 
-		}
 	}
+
 }

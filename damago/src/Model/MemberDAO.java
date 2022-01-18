@@ -20,9 +20,13 @@ public class MemberDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-			String user = "campus_d_6_0115";
-			String password = "smhrd6";
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String user = "hr";
+			String password = "hr";
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+//			String user = "campus_d_6_0115";
+//			String password = "smhrd6";
 
 			conn = DriverManager.getConnection(url, user, password);
 
@@ -48,14 +52,14 @@ public class MemberDAO {
 	}
 
 	public String Login() {
-		connect();
-		
-		String SQL = "Select id, password From user_info where id = ?";
-
-		String id = getStrInput("ID :  ");
-		int pw = getNumInput("PASSWORD :  ");
-
+	
 		try {
+			connect();
+			
+			String SQL = "Select id, password From user_info where id = ?";
+
+			String id = getStrInput("ID :  ");
+			int pw = getNumInput("PASSWORD :  ");
 			pst = conn.prepareStatement(SQL);
 			pst.setString(1, id);
 
@@ -74,7 +78,7 @@ public class MemberDAO {
 		}finally {
 			close();
 		}
-		return null;
+		return 1;
 	}
 	
 	public boolean insertMember() {

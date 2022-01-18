@@ -21,6 +21,7 @@ public class DamaDAO {
 			String user = "campus_d_6_0115";
 			String password = "smhrd6";
 
+
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			e.printStackTrace();
