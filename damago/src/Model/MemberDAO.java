@@ -90,13 +90,16 @@ public class MemberDAO {
         return check;
     }
  
-    int game_menu;
+   
     public void Login() {
-    	System.out.print("메뉴선택 >> ");
-		game_menu = sc.nextInt();
     	
-        String id = getStrInput("      ID : ");
-        String pw = getStrInput("PassWord : ");
+		System.out.print("아이디 : ");
+		String id = sc.next();
+		System.out.print("비밀번호 : ");
+		String pw = sc.next();
+		
+//        String id = getStrInput("      ID : ");
+//        String pw = getStrInput("PassWord : ");
         
         MemberDTO member = FindById(id);
        
