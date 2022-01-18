@@ -39,6 +39,7 @@ public class View {
 						System.out.println("===========================");
 						dama_menu = sc.nextInt();
 						
+						
 						if(dama_menu==1) {
 							System.out.println("다마고찌 등록");
 						}else if(dama_menu==2) {
