@@ -21,11 +21,11 @@ public class View {
 		System.out.println("==========================");
 		int game_menu;
 		int dama_menu;
-		String id;
-		String pw;
+		String id = null;
+		int pw = 0;
 		
 		if(input == 1) {
-			mem.Login();
+			//mem.Login();
 		}
 		else if(input ==2) {
 			mem.insertMember("Á¦µ¿Çö",123123);
