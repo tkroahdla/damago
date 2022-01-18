@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Model.DamaDAO;
-
+import Model.DamaVO;
 import Model.MemberDAO;
 
 public class View {
 
 	public static void main(String[] args) {
+		ArrayList<DamaVO> sel_list;
+		ArrayList<DamaVO> rank_list
 		String id = null;
 		int pw = 0;
 		DamaDAO dama = new DamaDAO();
@@ -41,10 +43,10 @@ public class View {
 							dama.insertDama(id);
 						}
 						else if(dama_menu ==2) {
-							
+							sel_list = dama.selectDama(id); // 리스트만 존재함 출력해야 확인가능
 						}
 						else if(dama_menu ==3) {
-							dama.DamaRank();
+							rank_list = dama.DamaRank(); // 리스트만 존재함 출력해야 확인가능
 						}
 						else {
 							System.out.println("뒤로가기");

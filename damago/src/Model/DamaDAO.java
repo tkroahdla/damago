@@ -126,7 +126,7 @@ public class DamaDAO {
 		return rank_list;
 	}
 
-	// 로그인 한 사용자의 다마고치 출력
+	//로그인한 사람 다마고치 출력
 	public ArrayList<DamaVO> selectDama(String id) {
 		ArrayList<DamaVO> dama_list = new ArrayList<DamaVO>();
 
@@ -149,18 +149,28 @@ public class DamaDAO {
 
 			// dama 테이블의 값을 읽어서 출력
 			while (rs.next()) {
-				int num = rs.getInt(1); // 커서가 가리키고 있는 행의 첫번째 column값을 읽어옴
+				//int num = rs.getInt(1); // 커서가 가리키고 있는 행의 첫번째 column값을 읽어옴
 				String nick = rs.getString("nick");
 				String type = rs.getString("type");
+				int level = rs.getInt("leb");
 				int exp = rs.getInt("exp");
 				int energy = rs.getInt("energy");
-				id = rs.getString("id");
-				String date = rs.getString("date");
+				
+				Date date = rs.getDate(7);
 
 				// 위에서 읽어온 값들로 초기화시켜 생성한 DamaVO 객체의 참조값을
 				// ArrayList에 추가
-				dama_list.add(new DamaVO(type, nick, num, exp, energy, id, date));
+				dama_list.add(new DamaVO( nick,type, exp,level, energy, id, date));
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 객체들 마무리(Connection, PreparedStatement, ResultSet)
+			close();
+		}
+		return dama_list;
+	}
 
 		} catch (Exception e) {
 			e.printStackTrace();
