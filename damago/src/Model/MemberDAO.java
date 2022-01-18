@@ -94,36 +94,35 @@ public class MemberDAO {
 		return check;
 	}
 
-//	public int Login(String id, String pw) {
-//
-//		String SQL = "Select id From use_info where id = ?";
-//
-//		// 실제 SQL에서 작동하게 할 명령문 입력
-//
-//		try {
-//
-//			pst = conn.prepareStatement(SQL);
-//
-//			pst.setString(1, id);
-//
-//			// 인젝션해킹등을 방지하기 위한 기법 ?에 ID값을 받은 후 사용.
-//
-//			rs = pst.executeQuery();
-//
-//			if (rs.next()) {
-//
-//				if (rs.getString(1).equals(pw)) {
-//
-//					return 1; // 로그인 성공
-//				} else
-//					return 0; // 비밀번호 불일치
-//			}
-//			return -1; // 아이디가 없음
-//		} catch (Exception e) {
-//			e.printStackTrace(); // 예외처리
-//		}
-//		return -2; // 데이터베이스 오류
-//	}
+	public int Login(String id, int pw) {
+
+		String SQL = "Select id From use_info where id = ?";
+
+		// 실제 SQL에서 작동하게 할 명령문 입력
+
+		try {
+
+			pst = conn.prepareStatement(SQL);
+
+			pst.setString(1, id);
+
+
+			rs = pst.executeQuery();
+
+			if (rs.next()) {
+
+				if (rs.getString(1).equals(pw)) {
+
+					return 1; // 로그인 성공
+				} else
+					return 0; // 비밀번호 불일치
+			}
+			return -1; // 아이디가 없음
+		} catch (Exception e) {
+			e.printStackTrace(); // 예외처리
+		}
+		return -2; // 데이터베이스 오류
+	}
 
 	private MemberDTO FindById(String id) {
 		for (MemberDTO memberDTO : members) {
@@ -141,23 +140,23 @@ public class MemberDAO {
 
 	int game_menu;
 
-	public void Login() {
-		System.out.print("메뉴선택 >> ");
-		game_menu = sc.nextInt();
-
-		String id = getStrInput("      ID : ");
-		int pw = getNumInput("PassWord : ");
-
-		MemberDTO member = FindById(id);
-
-		if (member == null) {
-			System.out.println("등록되지 않은 ID입니다.");
-		} else if (member.getPw().equals(pw)) { // 아이디 비번 모두 맞았을때
-			System.out.println("[" + member.getId() + "]님께서 로그인 하셨습니다.");
-		} else {
-			System.out.println("비밀번호가 틀렸습니다.");
-		}
-	}
+//	public void Login() {
+//		System.out.print("메뉴선택 >> ");
+//		game_menu = sc.nextInt();
+//
+//		String id = getStrInput("      ID : ");
+//		String pw = getStrInput("PassWord : ");
+//
+//		MemberDTO member = FindById(id);
+//
+//		if (member == null) {
+//			System.out.println("등록되지 않은 ID입니다.");
+//		} else if (member.getPw().equals(pw)) { // 아이디 비번 모두 맞았을때
+//			System.out.println("[" + member.getId() + "]님께서 로그인 하셨습니다.");
+//		} else {
+//			System.out.println("비밀번호가 틀렸습니다.");
+//		}
+//	}
 
 
 	private String getStrInput(String msg) {
@@ -169,5 +168,5 @@ public class MemberDAO {
 		System.out.println(msg);
 		return sc.nextInt();
 	}
-//아
+
 }
