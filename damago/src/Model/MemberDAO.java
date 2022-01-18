@@ -79,14 +79,10 @@ public class MemberDAO {
 
 		return check;
     }
-    
-    
- 
+
     private void Rank() {
-       
-        }
-        
-    
+    }
+      
     private boolean idCheck(String id) {//아이디체크
         boolean check = true;
         MemberDTO member = FindById(id);
@@ -95,8 +91,11 @@ public class MemberDAO {
         return check;
     }
  
+    int game_menu;
     public void Login() {
-        sc.nextLine();
+    	System.out.print("메뉴선택 >> ");
+		game_menu = sc.nextInt();
+    	
         String id = getStrInput("      ID : ");
         String pw = getStrInput("PassWord : ");
         
