@@ -46,7 +46,7 @@ public class MemberDAO {
 		}
 	}
 
-	public boolean insertMember(String id, int pw) {
+	public boolean insertMember(String id, String pw) {
 
 		boolean check = false;
 		String search = "";
@@ -75,16 +75,13 @@ public class MemberDAO {
 		} finally {
 			close();
 		}
-
 		return check;
-<<<<<<< HEAD
 	}
-
+	
 	private void Rank() {
-
 	}
 
-	private boolean idCheck(String id) {// 아이디체크
+	private boolean idCheck(String id) { // 아이디체크
 		boolean check = true;
 		MemberDTO member = FindById(id);
 		if (member == null)
@@ -141,61 +138,4 @@ public class MemberDAO {
 		System.out.println(msg);
 		return sc.nextInt();
 	}
-
-=======
-    }
-
-    private void Rank() {
-    }
-      
-    private boolean idCheck(String id) {//아이디체크
-        boolean check = true;
-        MemberDTO member = FindById(id);
-        if(member == null)
-            check = false;
-        return check;
-    }
- 
-   
-    public void Login() {
-    	
-		System.out.print("아이디 : ");
-		String id = sc.next();
-		System.out.print("비밀번호 : ");
-		String pw = sc.next();
-		
-//        String id = getStrInput("      ID : ");
-//        String pw = getStrInput("PassWord : ");
-        
-        MemberDTO member = FindById(id);
-       
-        if(member == null){
-            System.out.println("등록되지 않은 ID입니다."); 
-        }else if(member.getPw().equals(pw)) { // 아이디 비번 모두 맞았을때
-            System.out.println("[" + member.getId() + "]님께서 로그인 하셨습니다.");
-        }else {
-            System.out.println("비밀번호가 틀렸습니다.");
-        }
-    }
- 
-    private MemberDTO FindById(String id) {
-        for(MemberDTO memberDTO : members) {
-            if(memberDTO.getId().equals(id)) {
-                return memberDTO;
-            }
-        }
-        return null;
-    }
- 
-    private String getStrInput(String msg) {
-        System.out.println(msg);
-        return sc.nextLine();        
-    }
- 
-    private int getNumInput(String msg) {
-        System.out.println(msg);
-        return sc.nextInt();
-    }
- 
->>>>>>> branch 'master' of https://github.com/tkroahdla/damago
 }

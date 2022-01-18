@@ -22,7 +22,7 @@ public class DamaVO {
 		this.id = id;
 		this.date = date;
 	}
-
+	
 	public String getId() {
 		return id;
 	}
