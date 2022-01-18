@@ -47,7 +47,7 @@ public class MemberDAO {
 			}
 		}
 	
-    public boolean insertMember(String id,  String pw ) {
+    public boolean insertMember(String id,  int pw ) {
 
 		boolean check = false;
 		String search = "";
@@ -59,7 +59,7 @@ public class MemberDAO {
 			pst = conn.prepareStatement(sql);
 
 			pst.setString(1, id);
-			pst.setString(2, pw);
+			pst.setInt(2, pw);
 		
 			int cnt = pst.executeUpdate();
 
@@ -80,44 +80,12 @@ public class MemberDAO {
 		return check;
     }
     
-    public void run() {
-        
-        int key = 0;
-        while ((key = menu()) != 0) {
-            switch (key) {
-                case 1:
-                    Login();
-                    break;
-                case 2:
-                    NewMember();
-                    break;
-                case 3:
-                    Rank();
-            }
-        }
-    }
+    
  
     private void Rank() {
        
         }
         
-    private void NewMember() {
-        sc.nextLine();
-        String id = getStrInput("               ID : ");
-        String pw = getStrInput("         PassWord : ");
-        String pw2 = getStrInput("Password Confirm : ");
-       
-        if(idCheck(id)) {//아이디 중복확인
-            System.out.println("중복된 ID입니다.");
-            
-        }else if(pw.equals(pw2)) { // 비번 재확인 
-            members.add(new MemberDTO(id, pw));
-            
-            System.out.println(id + "님 가입을 축하드립니다.");
-        }else { // 틀릴시 
-            System.out.println("비밀번호를 확인해주세요.");
-        }
-    }
     
     private boolean idCheck(String id) {//아이디체크
         boolean check = true;

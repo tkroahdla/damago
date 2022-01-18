@@ -11,6 +11,7 @@ public class MemberDTO {
 	
 	
 	
+	
 	public MemberDTO(String id, String pw) {
 		super();
 		this.id = id;
