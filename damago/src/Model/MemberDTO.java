@@ -47,10 +47,14 @@ public class MemberDTO {
 		this.nick = nick;
 	}
 
-	/*
-	 * @Override public String toString() { return "MemberDTO [id=" + id + ", pw=" +
-	 * pw + ", species=" + species + "]"; }
-	 */
+	
+	
+	@Override
+	public String toString() {
+		return "MemberDTO [id=" + id + ", pw=" + pw + ", type=" + type + ", nick=" + nick + "]";
+	}
+
+	
 	
 
 	

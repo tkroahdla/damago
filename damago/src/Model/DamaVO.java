@@ -11,10 +11,11 @@ public class DamaVO {
 	private String id;//아이디
 	private String date;//마지막 접속날짜
 	
-	public	DamaVO(String nick, String species, int exp, int level, int energy, String id, String date) {
-		super();
+	
+	public	DamaVO(String nick, String type, int exp, int level,int energy,String id, String date) {
+		super();// 부모클래스의 생성자 호출 (기본생성자)
 		this.nick = nick;
-		this.type = species;
+		this.type = type;
 		this.exp = exp;
 		this.level = level;
 		this.energy = energy;
@@ -34,7 +35,7 @@ public class DamaVO {
 		return nick;
 	}
 
-	public String getSpecies() {
+	public String gettype() {
 		return type;
 	}
 
