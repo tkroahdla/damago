@@ -48,14 +48,6 @@ public class View {
 						}else if(dama_menu==4) {
 							System.out.println("뒤로가기");
 						}
-						System.out.println("  ㅇ ");
-						  
-						
-						
-						
-						
-						
-						
 					}
 
 			
