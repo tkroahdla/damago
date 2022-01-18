@@ -44,7 +44,7 @@ public class DamaDAO {
 	}
 
 	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
-	public boolean insertDama(String nick, String type) {
+	public boolean insertDama(String nick, String type , String id) {
 // 생성시 필수적으로 필요한 인자들 ??
 //nick type , int exp, int level, int energy, String id 제외
 		boolean check = false;
@@ -63,7 +63,7 @@ public class DamaDAO {
 			pst.setInt(3, exp);
 			pst.setInt(4, level);
 			pst.setInt(5, energy);
-		//	pst.setString(6, id );
+			pst.setString(6, id );
 			pst.setString(7,"meal" );
 			
 
