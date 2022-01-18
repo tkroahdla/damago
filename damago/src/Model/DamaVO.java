@@ -1,7 +1,5 @@
 package Model;
 
-
-
 public class DamaVO {
 	//필드 :  별명,종류,경험치,레벨,포만감,에너지
 	
@@ -13,6 +11,7 @@ public class DamaVO {
 	private String id;//아이디
 	private String date;//마지막 접속날짜
 	
+	
 	public	DamaVO(String nick, String type, int exp, int level,int energy,String id, String date) {
 		super();// 부모클래스의 생성자 호출 (기본생성자)
 		this.nick = nick;
@@ -22,7 +21,6 @@ public class DamaVO {
 		this.energy = energy;
 		this.id = id;
 		this.date = date;
-		
 	}
 
 	public String getId() {
@@ -37,7 +35,7 @@ public class DamaVO {
 		return nick;
 	}
 
-	public String getSpecies() {
+	public String gettype() {
 		return type;
 	}
 

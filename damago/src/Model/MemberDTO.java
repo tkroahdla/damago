@@ -9,9 +9,6 @@ public class MemberDTO {
 	private String type;
 	private String nick;
 	
-	
-	
-	
 	public MemberDTO(String id, String pw) {
 		super();
 		this.id = id;
@@ -26,8 +23,6 @@ public class MemberDTO {
 		this.id = id;
 	}
 
-	
-
 	public String getPw() {
 		return pw;
 	}
@@ -36,13 +31,9 @@ public class MemberDTO {
 		this.pw = pw;
 	}
 
-	
-
 	public String getType() {
 		return type;
 	}
-
-
 
 	public void setType(String type) {
 		this.type = type;
@@ -52,7 +43,6 @@ public class MemberDTO {
 		return nick;
 	}
 
-	
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
