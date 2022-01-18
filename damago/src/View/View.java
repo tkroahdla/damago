@@ -44,6 +44,9 @@ public class View {
 						}
 						else if(dama_menu ==2) {
 							sel_list = dama.selectDama(id); // 리스트만 존재함 출력해야 확인가능
+							while(true) {//키우기 그만할때 까지
+								
+							}
 						}
 						else if(dama_menu ==3) {
 							rank_list = dama.DamaRank(); // 리스트만 존재함 출력해야 확인가능
