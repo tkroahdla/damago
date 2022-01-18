@@ -105,6 +105,7 @@ public class DamaDAO {
 			connect();
 
 			// 3. 실행할 SQL문 정의
+			// order by를 넣어야 할건데 기준을 뭐로 잡을지를 정하지 않았으니 일단 생략
 			String sql = "select * from dama";
 
 			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
