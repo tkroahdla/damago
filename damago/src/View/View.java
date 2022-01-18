@@ -31,7 +31,7 @@ public class View {
 			if (game_menu == 1) {
 				System.out.println("\n=====로 그 인=====");
 				String login = mem.Login();
-				if (login == 1) {
+				if (login != null) {
 					System.out.println("로그인 성공!!");
 					// 여기부터 게임진행
 					while (true) {
@@ -41,12 +41,9 @@ public class View {
 						dama_menu = sc.nextInt();
 					}
 
-				} else if (login == 0) {
-					System.out.println("비밀번호 틀렸어요!");
-				} else if (login == -1) {
-					System.out.println("아이디가 없어요!");
+			
 				} else {
-					System.out.println("데이터베이스 오류");
+					System.out.println("로그인 실패!!");
 				}
 
 			} else if (game_menu == 2) {
