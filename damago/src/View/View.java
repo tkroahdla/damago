@@ -13,7 +13,7 @@ public class View {
 		
 		DamaDAO dama = new DamaDAO();
 		MemberDAO mem = new MemberDAO();
-		
+		int input = 0;
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("===== 다마고찌 키우기 게임 =====");
@@ -24,13 +24,17 @@ public class View {
 		String id;
 		String pw;
 		
-<<<<<<< HEAD
-=======
-		//mem.Login();
-		mem.insertMember("제동현",123123);
-		/*
->>>>>>> branch 'master' of https://github.com/tkroahdla/damago.git
-		//메인 페이지 메뉴선택
+		if(input == 1) {
+			mem.Login();
+		}
+		else if(input ==2) {
+			mem.insertMember("제동현",123123);
+		}
+		else {
+			
+		}
+		
+		
 		while(true) {
 			System.out.print("메뉴선택 >> ");
 			game_menu = sc.nextInt();
