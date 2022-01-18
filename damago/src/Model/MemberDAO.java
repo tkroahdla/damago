@@ -78,7 +78,7 @@ public class MemberDAO {
 		}finally {
 			close();
 		}
-		return 1;
+		return null;
 	}
 	
 	public boolean insertMember() {

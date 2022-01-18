@@ -44,7 +44,7 @@ public class View {
 							
 						}
 						else if(dama_menu ==3) {
-							
+							dama.DamaRank();
 						}
 						else {
 							System.out.println("뒤로가기");
