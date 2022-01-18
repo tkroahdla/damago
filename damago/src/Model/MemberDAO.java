@@ -80,10 +80,6 @@ public class MemberDAO {
 		return check;
 
 	}
-	
-
-
-
 
 	private boolean idCheck(String id) {// 아이디체크
 
@@ -134,10 +130,8 @@ public class MemberDAO {
 		return null;
 	}
 
-
 //	private void Rank() {
 //	}
-
 
 	int game_menu;
 
@@ -158,7 +152,6 @@ public class MemberDAO {
 			System.out.println("비밀번호가 틀렸습니다.");
 		}
 	}
-
 
 	private String getStrInput(String msg) {
 		System.out.println(msg);
