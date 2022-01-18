@@ -23,33 +23,28 @@ public class View {
 		int dama_menu;
 		String id = null;
 		int pw = 0;
+	
+	//	mem.insertMember();
 		
-
-
-		//mem.Login();
-		mem.insertMember("제동현",123123);
-		/*
-		//메인 페이지 메뉴선택
-=======
-		if(input == 1) {
-			//mem.Login();
-		}
-		else if(input ==2) {
-			mem.insertMember("제동현",123123);
-		}
-		else {
-			
-		}
-		
-		
->>>>>>> branch 'master' of https://github.com/tkroahdla/damago
 		while(true) {
 			System.out.print("메뉴선택 >> ");
 			game_menu = sc.nextInt();
 			//User 로그인
 			if(game_menu==1) {
 				System.out.println("\n=====로 그 인=====");
-				mem.Login(id, pw);
+				int login = mem.Login();
+				if(login==1) {
+					System.out.println("로그인 성공!!");
+				}
+				else if(login==0) {
+					System.out.println("비밀번호 틀렸어요!");
+				}
+				else if(login==-1) {
+					System.out.println("아이디가 없어요!");
+				}
+				else {
+					System.out.println("데이터베이스 오류");
+				}
 
 				System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹");
 				System.out.println("===========================");
@@ -144,7 +139,7 @@ public class View {
 
 			//User 회원가입
 			}else if(game_menu==2) {
-				mem.insertMember(id, pw);
+				mem.insertMember();
 				boolean check2= true ;
 				
 				//User 회원가입 성공 
@@ -166,6 +161,6 @@ public class View {
 		
 		}
 		
-	}
+	}}
 
 

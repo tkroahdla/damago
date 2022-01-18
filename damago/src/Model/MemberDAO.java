@@ -21,7 +21,6 @@ public class MemberDAO {
 		try {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_d_6_0115";
 			String password = "smhrd6";
@@ -49,10 +48,11 @@ public class MemberDAO {
 		}
 	}
 
-	public boolean insertMember(String id, int pw) {
-
+	public boolean insertMember() {
+		
+		String id = getStrInput("   ID :  ");
+		int pw = getNumInput("PassWord :  ");
 		boolean check = false;
-		String search = "";
 		try {
 			connect();
 			String sql = "insert into user_info values (?,?)";
@@ -90,32 +90,35 @@ public class MemberDAO {
 		return check;
 	}
 
-	public int Login(String id, int pw) {
-
-		String SQL = "Select id From use_info where id = ?";
-
-		// 실제 SQL에서 작동하게 할 명령문 입력
+	public int Login() {
 
 		try {
-
+			String id = getStrInput("   ID :  ");
+			int pw = getNumInput("PassWord :  ");
+			connect();
+			
+			String SQL = "select id, password From user_info where id = ?";
+			
 			pst = conn.prepareStatement(SQL);
-
+			
 			pst.setString(1, id);
-
-
+			
 			rs = pst.executeQuery();
-
+		
+			
 			if (rs.next()) {
-
-				if (rs.getString(1).equals(pw)) {
-
+			
+				if (rs.getInt("PASSWORD")==pw) {
 					return 1; // 로그인 성공
+					
 				} else
 					return 0; // 비밀번호 불일치
 			}
 			return -1; // 아이디가 없음
 		} catch (Exception e) {
 			e.printStackTrace(); // 예외처리
+		} finally {
+			close();
 		}
 		return -2; // 데이터베이스 오류
 	}
@@ -153,16 +156,16 @@ public class MemberDAO {
 //	}
 
 	private String getStrInput(String msg) {
-		System.out.println(msg);
+		System.out.print(msg);
 		return sc.nextLine();
 	}
 
 	private int getNumInput(String msg) {
-		System.out.println(msg);
+		System.out.print(msg);
 		return sc.nextInt();
 	}
 
-//아 씁 몇번
+
 
 
 
