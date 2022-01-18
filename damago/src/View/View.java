@@ -21,17 +21,17 @@ public class View {
 		System.out.println("==========================");
 		int game_menu;
 		int dama_menu;
-
+		String id;
+		String pw;
 		
 		//메인 페이지 메뉴선택
 		while(true) {
 			System.out.print("메뉴선택 >> ");
 			game_menu = sc.nextInt();
-			
 			//User 로그인
 			if(game_menu==1) {
 				System.out.println("\n=====로 그 인=====");
-				mem.Login(null, null);
+				mem.Login(id, pw);
 
 				System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹");
 				System.out.println("===========================");
