@@ -1,19 +1,22 @@
 package Model;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DamaDAO {
+	Scanner sc = new Scanner(System.in);
 	Connection conn = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
+
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_d_6_0115";
 			String password = "smhrd6";
@@ -44,14 +47,16 @@ public class DamaDAO {
 	}
 
 	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
-	public boolean insertDama(String nick, String type , String id) {
-// 생성시 필수적으로 필요한 인자들 ??
-//nick type , int exp, int level, int energy, String id 제외
+	public boolean insertDama(String id) {
 		boolean check = false;
 		try {
 			connect();
-			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sys_date, ?)";
-
+			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sysdate, ?)";
+			String nick = getStrInput(" 닉네임을 적어주세요 : ");
+			String type = getStrInput(" 타입을 적어주세요  : ");
+			//type이 varchar2(3)이라 엄청 작다 주의해서 넣자.
+			//이 문구 발견한다면 크기좀 늘려주세요
+			//밤이라 db서버가 꺼져있네요.
 			pst = conn.prepareStatement(sql);
 
 			int exp = 0;
@@ -63,9 +68,8 @@ public class DamaDAO {
 			pst.setInt(3, exp);
 			pst.setInt(4, level);
 			pst.setInt(5, energy);
-			pst.setString(6, id );
-			pst.setString(7,"meal" );
-			
+			pst.setString(6, id);
+			pst.setString(7, "meal");
 
 			int cnt = pst.executeUpdate();
 
@@ -75,9 +79,6 @@ public class DamaDAO {
 				check = false;
 			}
 
-			// catch : try내에서 예외상황 발생 시 catch문으로 들어오게 됨
-			// 단, catch문 다음 괄호에 적힌 오류 발생 시에만 실행됨
-			// 이 경우 ClassNotFoundException만 처리 가능
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("지금은 준비중입니다"); // 서비스 중 사용
@@ -86,7 +87,7 @@ public class DamaDAO {
 		}
 		return check;
 	}
-	
+
 	// 전체 사용자의 다마고치 출력(랭킹용)
 	public ArrayList<DamaVO> DamaRank() {
 		ArrayList<DamaVO> rank_list = new ArrayList<DamaVO>();
@@ -131,7 +132,7 @@ public class DamaDAO {
 		}
 		return rank_list;
 	}
-	
+
 	// 로그인 한 사용자의 다마고치 출력
 	public ArrayList<DamaVO> selectDama(String id) {
 		ArrayList<DamaVO> dama_list = new ArrayList<DamaVO>();
@@ -175,5 +176,15 @@ public class DamaDAO {
 			close();
 		}
 		return dama_list;
+	}
+
+	private String getStrInput(String msg) {
+		System.out.print(msg);
+		return sc.nextLine();
+	}
+
+	private int getNumInput(String msg) {
+		System.out.print(msg);
+		return sc.nextInt();
 	}
 }
