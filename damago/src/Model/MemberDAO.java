@@ -122,18 +122,18 @@ public class MemberDAO {
 		return -2; // 데이터베이스 오류
 	}
 
-	private MemberDTO FindById(String id) {
-		for (MemberDTO memberDTO : members) {
-			if (memberDTO.getId().equals(id)) {
-				return memberDTO;
-			}
-		}
-		return null;
-	}
-
-
-	private void Rank() {
-	}
+//	private MemberDTO FindById(String id) {
+//		for (MemberDTO memberDTO : members) {
+//			if (memberDTO.getId().equals(id)) {
+//				return memberDTO;
+//			}
+//		}
+//		return null;
+//	}
+//
+//
+//	private void Rank() {
+//	}
 
 
 	int game_menu;
