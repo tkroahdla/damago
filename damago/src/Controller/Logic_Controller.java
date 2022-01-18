@@ -1,5 +1,5 @@
 package Controller;
 
 public class Logic_Controller {
-¤¾¤¾
+	int test;
 }
