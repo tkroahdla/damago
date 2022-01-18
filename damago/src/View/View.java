@@ -38,9 +38,8 @@ public class View {
 						System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹\n4.뒤로 가기");
 						System.out.println("===========================");
 						dama_menu = sc.nextInt();
-						
 						if(dama_menu ==1) {
-							dama.insertDama(login, login, id)
+							dama.insertDama(id);
 						}
 						else if(dama_menu ==2) {
 							
