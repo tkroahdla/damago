@@ -17,12 +17,10 @@ public class View {
 		int input = 0;
 		Scanner sc = new Scanner(System.in);
 
-	
-		
 		int game_menu;
 		int dama_menu;
 
-		//메인 페이지 메뉴선택
+		// 메인 페이지 메뉴선택
 		while (true) {
 			System.out.println("===== 다마고찌 키우기 게임 =====");
 			System.out.println("1.로그인\n2.회원가입\n3.게임종료");
@@ -35,14 +33,14 @@ public class View {
 				int login = mem.Login();
 				if (login == 1) {
 					System.out.println("로그인 성공!!");
-					//여기부터 게임진행
-					while(true) {
-						
+					// 여기부터 게임진행
+					while (true) {
+
 						System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹\n4.뒤로 가기");
 						System.out.println("===========================");
 						dama_menu = sc.nextInt();
 					}
-					
+
 				} else if (login == 0) {
 					System.out.println("비밀번호 틀렸어요!");
 				} else if (login == -1) {
@@ -51,27 +49,27 @@ public class View {
 					System.out.println("데이터베이스 오류");
 				}
 
-				
-			}
-			else if(game_menu == 2) {
+			} else if (game_menu == 2) {
 				mem.insertMember();
 			}
-			
+
 			else {
 				System.out.println("게임 종료");
 				break;
 			}
-				
-			//	if(check2==true) {
-				
-				  //다마고찌 관리 메뉴선택 while(true) { System.out.print("메뉴선택 >> "); dama_menu =
-				  sc.nextInt();
-				  
-				  //다마고찌 등록 if(dama_menu==1) { System.out.println("다마고찌 등록");
-				  System.out.println("등록할 다마고찌 정보를 입력하세요."); System.out.print("이름 : "); String
-				  dama_name = sc.next(); System.out.print("종류 : "); // 속성은 어떤 종류가 있는걸로 할 것인지
-				  String dama_type = sc.next();
-				  
+
+			// if(check2==true) {
+
+			// 다마고찌 관리 메뉴선택 while(true) { System.out.print("메뉴선택 >> "); dama_menu =
+			sc.nextInt();
+
+			// 다마고찌 등록 if(dama_menu==1) { System.out.println("다마고찌 등록");
+			System.out.println("등록할 다마고찌 정보를 입력하세요.");
+			System.out.print("이름 : ");
+			String dama_name = sc.next();
+			System.out.print("종류 : "); // 속성은 어떤 종류가 있는걸로 할 것인지
+			String dama_type = sc.next();
+
 //				  boolean check3 = dama.insertdama(dama_name, dama_type);
 //				  
 //				  if(check3==true) { System.out.println("다마고찌 생성 성공"); }else {
@@ -117,31 +115,31 @@ public class View {
 //				  System.out.println("2등 : " + vo.); System.out.println("4등 : " + vo.);
 //				  System.out.println("5등 : " + vo.); }
 //				  System.out.println("==========================="); } }
-				 
 
-				// User 회원가입
-			} else if (game_menu == 2) {
-				mem.insertMember();
-				boolean check2 = true;
-
-				// User 회원가입 성공
-				if (check2 == true) {
-					System.out.println("회원가입 성공!!");
-
-					// User 회원가입 실패
-				} else {
-					System.out.println("회원가입 실패..");
-				}
-
-				// 게임 종료
-			} else if (game_menu == 3)
-
-			{
-				System.out.println("게임 종료");
-				break;
-			} else {
-				System.out.println("잘못입력했습니다. 다시 입력해주세요.");
-			}
+			// User 회원가입
+//			} else if (game_menu == 2) {
+//				mem.insertMember();
+//				boolean check2 = true;
+//
+//				// User 회원가입 성공
+//				if (check2 == true) {
+//					System.out.println("회원가입 성공!!");
+//
+//					// User 회원가입 실패
+//				} else {
+//					System.out.println("회원가입 실패..");
+//				}
+//
+//				// 게임 종료
+//			} else if (game_menu == 3)
+//
+//			{
+//				System.out.println("게임 종료");
+//				break;
+//			} else {
+//				System.out.println("잘못입력했습니다. 다시 입력해주세요.");
+//			}
 
 		}
-}}
+	}
+}
