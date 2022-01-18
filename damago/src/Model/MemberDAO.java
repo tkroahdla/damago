@@ -139,7 +139,7 @@ public class MemberDAO {
 		game_menu = sc.nextInt();
 
 		String id = getStrInput("      ID : ");
-		String pw = getStrInput("PassWord : ");
+		int pw = getNumInput("PassWord : ");
 
 		MemberDTO member = FindById(id);
 
