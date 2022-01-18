@@ -11,7 +11,7 @@ public class View {
 
 	public static void main(String[] args) {
 		ArrayList<DamaVO> sel_list;
-		ArrayList<DamaVO> rank_list
+		ArrayList<DamaVO> rank_list;
 		String id = null;
 		int pw = 0;
 		DamaDAO dama = new DamaDAO();
@@ -20,7 +20,7 @@ public class View {
 		Scanner sc = new Scanner(System.in);
 		int game_menu;
 		int dama_menu;
-		String login = 0;
+		String login = null;
 		// 메인 페이지 메뉴선택
 		while (true) {
 			System.out.println("===== 다마고찌 키우기 게임 =====");
