@@ -142,19 +142,7 @@ public class MemberDAO {
         sc.nextLine();
         String id = getStrInput("               ID : ");
         String pw = getStrInput("         PassWord : ");
-        String pw2 = getStrInput("Password Confirm : ");
-       
         
-        if(idCheck(id)) {//아이디 중복확인
-            System.out.println("중복된 ID입니다.");
-            
-        }else if(pw.equals(pw2)) { // 비번 재확인 
-            members.add(new MemberDTO(id, pw));
-            
-            System.out.println(id + "님 가입을 축하드립니다.");
-        }else { // 틀릴시 
-            System.out.println("비밀번호를 확인해주세요.");
-        }
         
     }
  
