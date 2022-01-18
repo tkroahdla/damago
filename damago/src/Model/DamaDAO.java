@@ -48,15 +48,10 @@ public class DamaDAO {
 // 생성시 필수적으로 필요한 인자들 ??
 //nick type , int exp, int level, int energy, String id 제외
 		boolean check = false;
-
 		try {
 			connect();
-			// 3. 실행할 SQL문(String으로) 정의
-			// ? : 바인드 변수(변해야 하는 값을 ?로 정의)
 			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sys_date, ?)";
 
-			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
-			// prepareStatement(정의할 sql);
 			pst = conn.prepareStatement(sql);
 
 			int exp = 0;

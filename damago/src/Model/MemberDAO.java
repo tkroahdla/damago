@@ -47,14 +47,13 @@ public class MemberDAO {
 		}
 	}
 
-	public int Login() {
+	public String Login() {
 		connect();
 		
 		String SQL = "Select id, password From user_info where id = ?";
 
 		String id = getStrInput("ID :  ");
 		int pw = getNumInput("PASSWORD :  ");
-		// 실제 SQL에서 작동하게 할 명령문 입력
 
 		try {
 			pst = conn.prepareStatement(SQL);
@@ -66,17 +65,16 @@ public class MemberDAO {
 
 				if (rs.getInt(2) == pw) {
 
-					return 1; // 로그인 성공
+					return id; // 로그인 성공
 				} else
-					return 0; // 비밀번호 불일치
+					return null; // 비밀번호 불일치
 			}
-			return -1; // 아이디가 없음
 		} catch (Exception e) {
 			e.printStackTrace(); // 예외처리
 		}finally {
 			close();
 		}
-		return -2; // 데이터베이스 오류
+		return null;
 	}
 	
 	public boolean insertMember() {
