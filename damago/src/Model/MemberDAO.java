@@ -81,7 +81,7 @@ public class MemberDAO {
 	
 	public boolean insertMember() {
 		
-		String id = getStrInput("   ID :  ");
+		String id = getStrInput("    ID :  ");
 		int pw = getNumInput("PassWord :  ");
 		boolean check = false;
 		try {
