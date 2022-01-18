@@ -6,7 +6,7 @@ public class DamaVO {
 	//필드 :  별명,종류,경험치,레벨,포만감,에너지
 	
 	private String nick; //별명
-	private String species; //종류
+	private String type; //종류
 	private int exp;//경험치
 	private int level;//레벨
 	private int energy;//에너지
@@ -19,7 +19,7 @@ public class DamaVO {
 	public	DamaVO(String nick, String species, int exp, int level,int energy,String id, String date) {
 		super();// 부모클래스의 생성자 호출 (기본생성자)
 		this.nick = nick;
-		this.species = species;
+		this.type = species;
 		this.exp = exp;
 		this.level = level;
 		this.energy = energy;
@@ -41,7 +41,7 @@ public class DamaVO {
 	}
 
 	public String getSpecies() {
-		return species;
+		return type;
 	}
 
 	public int getExp() {
@@ -54,6 +54,12 @@ public class DamaVO {
 
 	public int getEnergy() {
 		return energy;
+	}
+
+	@Override
+	public String toString() {
+		return "DamaVO [nick=" + nick + ", type=" + type + ", exp=" + exp + ", level=" + level + ", energy=" + energy
+				+ ", id=" + id + ", date=" + date + "]";
 	};
 	
 	
