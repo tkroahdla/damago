@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Model.DamaDAO;
+
 import Model.MemberDAO;
 
-
-public class View {
+	public class View {
+	
+	String id;
+	String pw;
 
 	public static void main(String[] args) {
 		
@@ -19,17 +22,10 @@ public class View {
 		System.out.println("===== 다마고찌 키우기 게임 =====");
 		System.out.println("1.로그인\n2.회원가입\n3.게임종료");
 		System.out.println("==========================");
+		
 		int game_menu;
 		int dama_menu;
-		String id;
-		String pw;
-		
-<<<<<<< HEAD
-=======
-		//mem.Login();
-		mem.insertMember("제동현",123123);
-		/*
->>>>>>> branch 'master' of https://github.com/tkroahdla/damago.git
+
 		//메인 페이지 메뉴선택
 		while(true) {
 			System.out.print("메뉴선택 >> ");
@@ -38,7 +34,7 @@ public class View {
 			if(game_menu==1) {
 				System.out.println("\n=====로 그 인=====");
 				mem.Login(id, pw);
-
+				
 				System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹");
 				System.out.println("===========================");
 			
@@ -132,7 +128,7 @@ public class View {
 
 			//User 회원가입
 			}else if(game_menu==2) {
-				mem.insertMember(id, pw);
+				mem.insertMember();
 				boolean check2= true ;
 				
 				//User 회원가입 성공 

@@ -6,6 +6,7 @@ import java.util.Random;
 import Model.DamaNeeds;
 
 public class NeedsMain extends DamaNeeds{
+	
 	ArrayList<DamaNeeds> needList = new ArrayList<DamaNeeds>();
 	Random r = new Random();
 	

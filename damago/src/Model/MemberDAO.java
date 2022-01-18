@@ -49,7 +49,7 @@ public class MemberDAO {
 		}
 	}
 
-	public boolean insertMember(String id, int pw) {
+	public boolean insertMember(String id, String pw) {
 
 		boolean check = false;
 		String search = "";
@@ -60,7 +60,7 @@ public class MemberDAO {
 			pst = conn.prepareStatement(sql);
 
 			pst.setString(1, id);
-			pst.setInt(2, pw);
+			pst.setString(2, pw);
 
 			int cnt = pst.executeUpdate();
 
@@ -158,7 +158,6 @@ public class MemberDAO {
 //			System.out.println("비밀번호가 틀렸습니다.");
 //		}
 //	}
-
 
 	private String getStrInput(String msg) {
 		System.out.println(msg);
