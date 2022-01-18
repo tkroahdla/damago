@@ -53,53 +53,6 @@ public class DamaDAO {
 		}
 	}
 
-	// 사용자가 입력한 값을 USER_INFO에 삽입(회원가입)
-	public boolean insertMember(String id, int pw) {
-		// JAVA - Oracle DB를 연결해 줄 JDBC java api 사용
-
-		boolean check = false;
-
-		try {
-			// 1. Oracle JDBC driver을 동적로딩(= Oracle DB와 연결 선언)
-			connect();
-
-			// 3. 실행할 SQL문(String으로) 정의
-			// ? : 바인드 변수(변해야 하는 값을 ?로 정의)
-			String sql = "insert into USER_INFO values(User_SEQ.nextval, ?, ?)";
-
-			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
-			// prepareStatement(정의할 sql);
-			pst = conn.prepareStatement(sql);
-
-			// 5. 바인드 변수를 채우기
-			// pst.set변수형(바인드변수의 순번, 채울 것)
-			pst.setString(1, id);
-			pst.setInt(2, pw);
-
-			// 6. SQL문 실행하여 결과 처리
-			// executeUpdate() : insert, delete, update -> table상에 변화가 일어남
-			// 반환값 : int(-> table상에서 몇개의 행이 수정되었는지 반환)
-			// 수정이 제대로 일어난 경우 항상 0보다 큰 값을 반환함
-			int cnt = pst.executeUpdate();
-
-			if (cnt > 0) { // 추가 성공
-				check = true;
-			} else { // 추가 실패
-				check = false;
-			}
-
-			// catch : try내에서 예외상황 발생 시 catch문으로 들어오게 됨
-			// 단, catch문 다음 괄호에 적힌 오류 발생 시에만 실행됨
-			// 이 경우 ClassNotFoundException만 처리 가능
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("지금은 준비중입니다"); // 서비스 중 사용
-		} finally {
-			close();
-		}
-		return check;
-	}
-
 	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
 	public boolean insertPet(String nick, String species, int exp, int level, int energy, String id, String date) {
 		// JAVA - Oracle DB를 연결해 줄 JDBC java api 사용
@@ -112,7 +65,7 @@ public class DamaDAO {
 
 			// 3. 실행할 SQL문(String으로) 정의
 			// ? : 바인드 변수(변해야 하는 값을 ?로 정의)
-			String sql = "insert into DAMA values(Dama_SEQ.nextval, ?, ?, ?, ?, ?,?,?)";
+			String sql = "insert into DAMA values(Dama_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
 
 			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
 			// prepareStatement(정의할 sql);
