@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PetDAO {
+public class DamaDAO {
 	// 전역변수로 선언
 	Connection conn = null;
 	PreparedStatement pst = null;
