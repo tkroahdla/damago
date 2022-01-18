@@ -156,9 +156,9 @@ public class DamaDAO {
 		return check;
 	}
 
-	public ArrayList<PetVO> selectPet() {
+	public ArrayList<DamaVO> selectPet() {
 
-		ArrayList<PetVO> P_list = new ArrayList<PetVO>();
+		ArrayList<DamaVO> P_list = new ArrayList<DamaVO>();
 
 		try {
 			connect();
@@ -186,9 +186,9 @@ public class DamaDAO {
 				String id = rs.getString("id");
 				String date = rs.getString("date");
 
-				// 위에서 읽어온 값들로 초기화시켜 생성한 PetVO 객체의 참조값을
+				// 위에서 읽어온 값들로 초기화시켜 생성한 DamaVO 객체의 참조값을
 				// ArrayList에 추가
-				P_list.add(new PetVO(type, nick, num, exp, energy, id, date));
+				P_list.add(new DamaVO(type, nick, num, exp, energy, id, date));
 			}
 
 		} catch (Exception e) {
