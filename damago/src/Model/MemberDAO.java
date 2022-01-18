@@ -127,10 +127,11 @@ public class MemberDAO {
         return check;
     }
  
-    private void Login() {
-        sc.nextLine();
+    public void Login() {
+        
         String id = getStrInput("      ID : ");
         String pw = getStrInput("PassWord : ");
+    
         
         MemberDTO member = FindById(id);
        

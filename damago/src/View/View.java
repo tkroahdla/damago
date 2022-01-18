@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Model.DamaDAO;
+import Model.MemberDAO;
 
 
 public class View {
@@ -11,13 +12,15 @@ public class View {
 	public static void main(String[] args) {
 		
 		DamaDAO dama = new DamaDAO(); //?
-
+		MemberDAO mem = new MemberDAO();
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("===== 다마고찌 키우기 게임 =====");
 		System.out.println("1.로그인\n2.회원가입\n3.게임종료");
 		System.out.println("==========================");
 		int game_menu;
+		
+		mem.Login();
 		
 		/*
 		//메인 페이지 메뉴선택
