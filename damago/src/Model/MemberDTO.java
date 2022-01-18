@@ -5,7 +5,11 @@ public class MemberDTO {
 
 	private String pw;
 
-	private String species;
+	private String type;
+	
+	private String nick;
+	
+	
 
 	
 	public String getId() {
@@ -36,22 +40,27 @@ public class MemberDTO {
 
 	
 
-	public String getName() {
+	public String getType() {
 
-		return species;
+		return type;
 
 	}
 
 
 
-	public void setSpiceis(String species) {
+	public void setType(String type) {
 
-		this.species = species;
+		this.type = type;
 
 	}
 	
-	public String getSpecies() {
-		return species;
+	public String getNick() {
+		return nick;
+	}
+
+	
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
 	@Override
