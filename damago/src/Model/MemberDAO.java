@@ -169,5 +169,5 @@ public class MemberDAO {
 		System.out.println(msg);
 		return sc.nextInt();
 	}
-
+//¾Æ
 }
