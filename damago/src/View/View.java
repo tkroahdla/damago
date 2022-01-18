@@ -6,7 +6,6 @@ import java.util.Scanner;
 import Model.DamaDAO;
 import Model.MemberDAO;
 
-
 public class View {
 
 	public static void main(String[] args) {
@@ -28,9 +27,9 @@ public class View {
 
 		//mem.Login();
 		mem.insertMember("제동현",123123);
-		/*
+		
 		//메인 페이지 메뉴선택
-=======
+
 		if(input == 1) {
 			//mem.Login();
 		}
@@ -42,7 +41,7 @@ public class View {
 		}
 		
 		
->>>>>>> branch 'master' of https://github.com/tkroahdla/damago
+
 		while(true) {
 			System.out.print("메뉴선택 >> ");
 			game_menu = sc.nextInt();
@@ -143,29 +142,27 @@ public class View {
 */					
 
 			//User 회원가입
-			}else if(game_menu==2) {
-				mem.insertMember(id, pw);
-				boolean check2= true ;
-				
-				//User 회원가입 성공 
-				if(check2==true) {
-					System.out.println("회원가입 성공!!");
-					
-				//User 회원가입 실패	
-				}else {
-					System.out.println("회원가입 실패..");
-				}
+	}else if(game_menu==2) {
+		mem.insertMember(id, pw);
+		boolean check2= true ;
+		
+		//User 회원가입 성공 
+		if(check2==true) {
+			System.out.println("회원가입 성공!!");
 			
-			//게임 종료
-			}else if(game_menu==3) {
-				System.out.println("게임 종료");
-				break;
-			}else {
-				System.out.println("잘못입력했습니다. 다시 입력해주세요.");
-			}
-		
+		//User 회원가입 실패	
+		}else {
+			System.out.println("회원가입 실패..");
 		}
-		
+	
+	//게임 종료
+	}else if(game_menu==3) {
+		System.out.println("게임 종료");
+		break;
+	}else {
+		System.out.println("잘못입력했습니다. 다시 입력해주세요.");
 	}
 
+}
 
+}
