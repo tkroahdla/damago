@@ -54,8 +54,8 @@ public class DamaVO {
 
 	@Override
 	public String toString() {
-		return "===== 내 다마고찌 ===== \n레벨 : " + level + "\n이름 : " + nick + "\n타입 : " + type + "\n경험치 : " + exp
-				+ "\n에너지 : " + energy + "\n생성일 : " + date + "\n====================" + "\n";
+		return "레벨 : " + level + "\t 이름 : " + nick + "(id :"+id +")"+"\t타입 : " + type + "\t경험치 : " + exp
+	            + "\t에너지 : " + energy + "\t생성일 : " + date + "\n----------------------------------------------------------------------------------------------";
 	}
 
 	

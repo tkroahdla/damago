@@ -1,6 +1,17 @@
 package Controller;
 
+import java.util.Scanner;
+
+import Model.DamaVO;
+
 public class Logic_Controller {
+	public void sel_need(DamaVO vo) {
+		Scanner sc = new Scanner(System.in);
+		
+		
+	}
+	
+	
 	public void start() {
 		//menu(); // 메뉴 선택화면 출력
 		//select(); // 메뉴 선택 번호 입력받기

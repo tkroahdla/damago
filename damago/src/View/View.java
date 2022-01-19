@@ -6,7 +6,6 @@ import java.util.Scanner;
 import Model.DamaDAO;
 import Model.DamaVO;
 import Model.MemberDAO;
-
 public class View {
 
 	public static void main(String[] args) {
@@ -44,9 +43,10 @@ public class View {
 							dama.insertDama(login);
 						}
 						else if(dama_menu ==2) { // 관리
+							System.out.println("===== 내 다마고찌 ====="); 
 							sel_list = dama.selectDama(login); // 리스트만 존재함 출력해야 확인가능
-							System.out.println(sel_list.size());
-							System.out.println(login);
+							//System.out.println(sel_list.size());
+							//System.out.println(login);
 //							for(DamaVO vo : sel_list) {
 //								System.out.printf("%d %s",vo,vo.toString());
 //							}
@@ -54,14 +54,16 @@ public class View {
 								System.out.println((i+1)+"번"+sel_list.get(i).toString());
 							}
 							DamaVO sel_dama = dama.select(sel_list);
+							System.out.println();
 							String needs=dama.DamaNeeds();
 							while(true) {//키우기 그만할때 까지
-								System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기");
+								System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
 								
 								
 							}
 						}
 						else if(dama_menu ==3) {// 랭킹
+							System.out.println("===== 다마고찌 랭킹 ====="); 
 							rank_list = dama.DamaRank(); // 리스트만 존재함 출력해야 확인가능
 							for(DamaVO vo : rank_list) {
 								System.out.println(vo.toString());
@@ -71,8 +73,6 @@ public class View {
 							System.out.println("뒤로가기");
 							break;
 						}
-						
-						
 					}
 
 				} else {

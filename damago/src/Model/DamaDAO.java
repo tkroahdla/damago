@@ -111,7 +111,7 @@ public class DamaDAO {
 				int energy = rs.getInt("energy");
 				String id = rs.getString("id");
 				Date date = rs.getDate(7);
-				System.out.println(date);
+				//System.out.println(date);
 				String needs = rs.getString("needs");
 
 				rank_list.add(new DamaVO(nick, type, exp, level, energy, id, date));
