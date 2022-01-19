@@ -29,6 +29,8 @@ public class View {
 			System.out.print("메뉴선택 >> ");
 			game_menu = sc.nextInt();
 			// User 로그인
+			
+			
 			if (game_menu == 1) {
 				System.out.println("\n=====로 그 인=====");
 				login = mem.Login();
@@ -41,6 +43,7 @@ public class View {
 						dama_menu = sc.nextInt();
 						if(dama_menu ==1) {
 							dama.insertDama(id);
+							
 						}
 						else if(dama_menu ==2) {
 							sel_list = dama.selectDama(id); // 리스트만 존재함 출력해야 확인가능

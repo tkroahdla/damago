@@ -172,14 +172,8 @@ public class DamaDAO {
 		return dama_list;
 	}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// 객체들 마무리(Connection, PreparedStatement, ResultSet)
-			close();
-		}
-		return dama_list;
-	}
+		
+	
 
 	private String getStrInput(String msg) {
 		System.out.print(msg);

@@ -19,14 +19,14 @@ public class MemberDAO {
 
 	public void connect() {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "hr";
-			String password = "hr";
 //			Class.forName("oracle.jdbc.driver.OracleDriver");
-//			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-//			String user = "campus_d_6_0115";
-//			String password = "smhrd6";
+//			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+//			String user = "hr";
+//			String password = "hr";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+			String user = "campus_d_6_0115";
+			String password = "smhrd6";
 
 			conn = DriverManager.getConnection(url, user, password);
 
