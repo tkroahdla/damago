@@ -25,7 +25,7 @@ public class DamaDTO {
 	}
 	
 	public void setEnergy(int energy) {
-		this.energy+=energy;
+		this.energy= energy;
 	}
 
 	public String getId() {
