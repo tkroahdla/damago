@@ -56,6 +56,9 @@ public class View {
 							while (true) {// 키우기 그만할때 까지
 								System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
 								
+								
+								
+								
 							}
 						} else if (dama_menu == 3) {// 랭킹
 							System.out.println("===== 다마고찌 랭킹 =====");
