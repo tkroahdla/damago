@@ -54,10 +54,10 @@ public class DamaDAO {
 		try {
 			connect();
 			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sysdate, ?)";
-			String nick = getStrInput(" 닉네임을 적어주세요 : ");
+			String nick = getStrInput(" 다마고치의 별명을 입력해주세요! : ");
 			String[] t = {"동글이","네모","세모"};
 			System.out.println("[1]동글이 [2]네모 [3]세모");
-			int type = getNumInput(" 타입을 골라주세요  : ");
+			int type = getNumInput(" 다마고치의 종류를 선택해주세요! : ");
 
 			pst = conn.prepareStatement(sql);
 
@@ -77,15 +77,15 @@ public class DamaDAO {
 
 			if (cnt > 0) { // 추가 성공
 				check = true;
-				System.out.println("생성 완료!");
+				System.out.println("다마고치 등록 완료!");
 			} else { // 추가 실패
 				check = false;
-				System.out.println("생성 실패..");
+				System.out.println("다마고치 등록 실패...");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("지금은 준비중입니다"); // 서비스 중 사용
+			System.out.println("지금은 준비 중이에요."); // 서비스 중 사용
 		} finally {
 			close();
 		}
@@ -177,7 +177,7 @@ public class DamaDAO {
 	}
 
 	public DamaDTO select(ArrayList<DamaDTO> list) { // 다마고치 선택 후 VO객체 반환
-		int input = getNumInput(" 선택할 다마고치 번호 :");
+		int input = getNumInput(" 어떤 다마고치를 선택할까요? :");
 		return list.get(input - 1); // 리스트는 0부터니까 -1
 	}
 	
@@ -186,7 +186,7 @@ public class DamaDAO {
 	      boolean check = false;
 
 	      try {
-	    	 String nick =getStrInput("삭제할 다마고치의 닉네임을 입력하세요 : ");
+	    	 String nick =getStrInput("삭제할 다마고치의 별명을 입력해주세요! : ");
 	         connect();
 
 	         String sql = "delete from dama where nick = ?";
@@ -203,10 +203,10 @@ public class DamaDAO {
 
 	         if (cnt > 0) { // 변경 성공
 	            check = true;
-	            System.out.println("삭제 성공!");
+	            System.out.println("다마고치 삭제 완료!");
 	         }
 	         else {
-	        	 System.out.println("삭제 실패!");
+	        	 System.out.println("다마고치 삭제 실패...");
 	         }
 
 	      } catch (Exception e) {
