@@ -25,6 +25,14 @@ public class DamaDTO {
 		this.date = date;
 	}
 	
+	public int getCleaning() {
+		return cleaning;
+	}
+
+	public void setCleaning(int cleaning) {
+		this.cleaning = cleaning;
+	}
+
 	public void setEnergy(int energy) {
 		this.energy= energy;
 	}

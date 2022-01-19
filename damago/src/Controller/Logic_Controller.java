@@ -10,7 +10,18 @@ public class Logic_Controller {
 	String needs = null;
 	DamaDAO dama = new DamaDAO();
 	// System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
+	
+	 public DamaDTO expPlus(DamaDTO vo) { // 경험치 증가
+	      vo.setExp(vo.getExp()+10);
+	      return vo;
+	   }
+	
+	 public DamaDTO cleaning(DamaDTO vo) { // 청결도 감소
+	      vo.setCleaning(vo.getCleaning()-10);
+	      return vo;
+	   }
 
+	
 	public DamaDTO sel_need(DamaDTO vo, int needs) {
 		// int need = dama.DamaNeeds();
 		int input = getNumInput("무엇을 해줄까요??");
@@ -18,18 +29,25 @@ public class Logic_Controller {
 			if (input == 1) {
 				System.out.println("밥먹이기(에너지+30)");
 				energytype2(vo);
+				cleaning(vo);
 			} else if (input == 2) {
 				System.out.println("잠재우기(에너지+30)");
 				energytype2(vo);
+				cleaning(vo);
 			} else if (input == 3) {
 				System.out.println("놀아주기(에너지-10)");
 				energytype1(vo);
+				expPlus(vo);
+				cleaning(vo);
 			} else if (input == 4) {
 				System.out.println("운동시키기(에너지-10)");
 				energytype1(vo);
+				expPlus(vo);
+				cleaning(vo);
 			} else if (input == 5) {
 				System.out.println("씻겨주기(에너지+30)");
 				energytype2(vo);
+				cleaning(vo);
 			} else {
 				System.out.println("잘못된 입력이에요.");
 			}

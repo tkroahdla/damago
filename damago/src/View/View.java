@@ -62,6 +62,8 @@ public class View {
 							
 							int needs = dama.DamaNeeds();
 							while (true) {// 키우기 그만할때 까지
+								System.out.println("현재 경험치 : "+sel_dama.getExp());
+		                        System.out.println("청결도 : "+sel_dama.getCleaning());
 								//System.out.println("◆ 1.밥먹이기 \n◆ 2.잠재우기 \n◆ 3.놀아주기 \n◆ 4.운동하기 \n◆ 5.뒤로가기 \n");
 								System.out.println("◆ 1.밥먹이기\n◆ 2.잠재우기 \n◆ 3.놀아주기 \n◆ 4.운동시키기\n◆ 5.씻겨주기 \n◆ 6.뒤로가기");
 								lc.sel_need(sel_dama, needs);
