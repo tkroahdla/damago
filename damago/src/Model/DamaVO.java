@@ -58,4 +58,6 @@ public class DamaVO {
 				+ "\n에너지 : " + energy + "\n생성일 : " + date + "\n====================" + "\n";
 	}
 
+	
+	
 }
