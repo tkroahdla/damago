@@ -10,7 +10,7 @@ import Model.MemberDAO;
 public class View {
 
 	public static void main(String[] args) {
-		ArrayList<DamaVO> sel_list;
+		ArrayList<DamaVO> sel_list = null;
 		ArrayList<DamaVO> rank_list;
 		String id = null;
 		int pw = 0;
@@ -42,17 +42,25 @@ public class View {
 						System.out.println("===========================");
 						dama_menu = sc.nextInt();
 						if(dama_menu ==1) {
-							dama.insertDama(id);
+							dama.insertDama(login);
 							
 						}
 						else if(dama_menu ==2) {
-							sel_list = dama.selectDama(id); // 리스트만 존재함 출력해야 확인가능
+							sel_list = dama.selectDama(login); // 리스트만 존재함 출력해야 확인가능
+							System.out.println(sel_list.size());
+							System.out.println(login);
+							for(DamaVO vo : sel_list) {
+								System.out.println(vo.toString());
+							}
 							while(true) {//키우기 그만할때 까지
 								
 							}
 						}
 						else if(dama_menu ==3) {
 							rank_list = dama.DamaRank(); // 리스트만 존재함 출력해야 확인가능
+							for(DamaVO vo : rank_list) {
+								System.out.println(vo.toString());
+							}
 						}
 						else {
 							System.out.println("뒤로가기");
