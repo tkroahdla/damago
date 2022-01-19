@@ -98,10 +98,10 @@ public class MemberDAO {
 			int cnt = pst.executeUpdate();
 
 			if (cnt > 0) { // 추가 성공
-				System.out.println("추가 성공!");
+				System.out.println("회원가입 완료!");
 				check = true;
 			} else { // 추가 실패
-				System.out.println("추가 실패!");
+				System.out.println("회원가입 실패!");
 				check = false;
 			}
 

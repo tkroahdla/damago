@@ -28,20 +28,20 @@ public class Logic_Controller {
 	
 	public DamaDTO energyCheck(DamaDTO vo) {
 		if(vo.getEnergy()>100) {
-			System.out.println("더이상 에너지를 채울 수 없어요... ");
+			System.out.println("더 이상 에너지를 채울 수 없어요!");
 			vo.setEnergy(100);
 		}
 		if(vo.getEnergy()< -50) {
-			System.out.println(vo.getNick()+"(은)는 움직이기 힘들어한다... ");
+			System.out.println(vo.getNick()+"(이)의 움직임이 조금 느려진 것 같다!");
 		}
 		if(vo.getEnergy()< -70) {
-			System.out.println(vo.getNick()+"(은)는 축 처져있다...");
+			System.out.println(vo.getNick()+"(은)는 왠지 기운이 없어 보인다!");
 		}
 		if(vo.getEnergy()< -90) {
-			System.out.println(vo.getNick()+"(은)는 힘이 없다...");
+			System.out.println(vo.getNick()+"(은)는 눈에 띄게 힘이 없어 보인다!");
 		}
 		if (vo.getEnergy() < -99) {
-			System.out.println(vo.getNick()+"(은)는 숨을 쉬지 않는다...");
+			System.out.println(vo.getNick()+"(이)가 더 이상 움직이지 않는다...");
 			vo.setEnergy(999);
 		}
 		return vo;
@@ -64,15 +64,15 @@ public class Logic_Controller {
 		int a = r.nextInt(6);
 		// String need = needs[r.nextInt(5)];
 		if (a == 0)
-			System.out.println("현재 상태 : 배고파!!\n");
+			System.out.println("현재 상태 : 어딘가에서 꼬르륵 소리가 난다...\n");
 		else if (a == 1)
-			System.out.println("현재 상태 : 피곤해..\n");
+			System.out.println("현재 상태 : 꾸벅꾸벅 졸고 있다...\n");
 		else if (a == 2)
-			System.out.println("현재 상태 : 우오! 힘이 넘쳐흐른다!\n");
+			System.out.println("현재 상태 : 이곳저곳을 기웃거리고 있다. 심심한 걸까?\n");
 		else if (a == 3)
-			System.out.println("현재 상태 : 심심해~ \n");
+			System.out.println("현재 상태 : 폴짝폴짝 뛰어다니고 있다. 힘이 넘쳐 보인다!\n");
 		else if (a == 4)
-			System.out.println("현재 상태 : 으악 더러워!!\n");
+			System.out.println("현재 상태 : 어딘가에서 악취가 느껴진다...\n");
 
 		return a;
 	}
@@ -81,76 +81,76 @@ public class Logic_Controller {
 														// 그것임
 		// int need = dama.DamaNeeds();
 		System.out.println("스테이트는 : " + vo.getState());
-		int input = getNumInput("무엇을 해줄까요??");
+		int input = getNumInput("무엇을 할까? ");
 		if (input == 6) { // 종료인 경우가 우선순위가 될 수 있도록 배치 // 종료인게 우선순위가 먼저여야 해서,, 그 다음 우선순위는 욕망 해결
 			vo.setStop(true); // 다마고치 필드에 stop이라고 값을 정의했어요,
 			return vo; // 종료누르면 트루로 바꾸고 반환
 		}
 		if (vo.getState() == 1) { // 이건 getstate가 1일때. 왜냐하면 초기값이 0이라서 1인경우는 정상작동하는걸루..
 			if (input == 1) {
-				System.out.println("밥먹이기(에너지+30)");
+				System.out.println("맛있는 밥을 먹었다!(에너지+30)");
 				energyplus(vo);
 				expPlus(vo);
 				cleaning(vo);
 			} else if (input == 2) {
-				System.out.println("잠재우기(에너지+30)");
+				System.out.println("쿨쿨... 푹 자고 일어났다!(에너지+30)");
 				energyplus(vo);
 				cleaning(vo);
 			} else if (input == 3) {
-				System.out.println("놀아주기(에너지-10)");
+				System.out.println("데굴데굴... 재미있게 놀았다!(에너지-10)");
 				energyminus(vo);
 				expPlus(vo);
 				cleaning(vo);
 			} else if (input == 4) {
-				System.out.println("운동시키기(에너지-10)");
+				System.out.println("으쌰으쌰... 열심히 운동했다!(에너지-10)");
 				energyminus(vo);
 				expPlus(vo);
 				cleaning(vo);
 			} else if (input == 5) {
-				System.out.println("씻겨주기(에너지+30)");
+				System.out.println("뽀드득뽀드득... 깨끗해졌다!(에너지+30)");
 				energyplus(vo);
 				// cleaning(vo);
 			} else {
-				System.out.println("잘못된 입력이에요.");
+				System.out.println("올바른 선택지를 선택해주세요!");
 			}
 			return vo;
 		}
 
 		if (needs + 1 == input && vo.getState() == 0) { // 이건 욕망을 풀어주는 번호 눌럿을때 && 그리구 state상태가 0일때 0이라는건 욕망이 있다는뜻!
-			System.out.println(vo.getNick() + "(이)가 만족합니다...");
+			System.out.println(vo.getNick() + "(이)가 만족한 것 같다!");
 			if (input == 1) {
-				System.out.println("밥먹이기(에너지+30) 경험치 없음.");
+				System.out.println("맛있는 밥을 먹었다!(에너지+30) 경험치 없음.");
 				energyplus(vo);
 				// expPlus(vo);
 				cleaning(vo);
 			} else if (input == 2) {
-				System.out.println("잠재우기(에너지+30) 경험치 없음.");
+				System.out.println("쿨쿨... 푹 자고 일어났다!(에너지+30) 경험치 없음.");
 				energyplus(vo);
 				cleaning(vo);
 			} else if (input == 3) {
-				System.out.println("놀아주기(에너지-10) 경험치 없음.");
+				System.out.println("데굴데굴... 재미있게 놀았다!(에너지-10) 경험치 없음.");
 				energyminus(vo);
 				// expPlus(vo);
 				cleaning(vo);
 			} else if (input == 4) {
-				System.out.println("운동시키기(에너지-10) 경험치 없음.");
+				System.out.println("으쌰으쌰... 열심히 운동했다!(에너지-10) 경험치 없음.");
 				energyminus(vo);
 				// expPlus(vo);
 				cleaning(vo);
 			} else if (input == 5) {
-				System.out.println("씻겨주기(에너지+30) 경험치 없음.");
+				System.out.println("뽀드득뽀드득... 깨끗해졌다!(에너지+30) 경험치 없음.");
 				energyplus(vo);
 				// cleaning(vo);
 			} else if (input == 6) {
 				vo.setStop(true);
 				return vo;
 			} else {
-				System.out.println("잘못된 입력이에요.");
+				System.out.println("올바른 선택지를 선택해주세요!");
 			}
 			vo.setState(1);
 			System.out.println(vo.getCleaning());
 		} else if (needs + 1 != input) {
-			System.out.println(vo.getNick() + "(이)가 삐졌다."); // 나머지는 욕망을 못들어주는 거기때문에 삐졋다고 출력함..
+			System.out.println("그게 아냐! "+ vo.getNick() + "(이)는 토라졌다."); // 나머지는 욕망을 못들어주는 거기때문에 삐졋다고 출력함..
 			energyminus(vo); // 에너지 감소
 			return vo;
 		}

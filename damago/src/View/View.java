@@ -27,22 +27,22 @@ public class View {
 		// 메인 페이지 메뉴선택
 		while (true) {
 			startpic();
-			System.out.println("===== 다마고찌 키우기 게임 =====");
+			System.out.println("===== 다마고치 키우기 게임 =====");
 			System.out.println("1.로그인\n2.회원가입\n3.게임종료");
 			System.out.println("==========================");
-			System.out.print("메뉴선택 >> ");
+			System.out.print("메뉴 선택 >> ");
 			game_menu = sc.nextInt();
 			// User 로그인
 			if (game_menu == 1) {
 				System.out.println("\n===== 로 그 인 =====");
 				login = mem.Login();
 				if (login != null) {
-					System.out.println("로그인 성공!!");
+					System.out.println("로그인 성공!!! 당신의 다마고치를 키워보세요.");
 					while (true) {
 						System.out.println("===========================");
-						System.out.println("1.다마고치 등록\n2.다마고치 관리\n3.다마고치 랭킹\n4.다마고치 삭제\n5.뒤로 가기");
+						System.out.println("1.다마고치 등록\n2.다마고치 관리\n3.다마고치 랭킹\n4.다마고치 삭제\n5.목록으로 돌아가기");
 						System.out.println("===========================");
-						System.out.print("메뉴선택 >> ");
+						System.out.print("메뉴 선택 >> ");
 						dama_menu = sc.nextInt();
 						if (dama_menu == 1) { // 등록
 							dama.insertDama(login);
@@ -51,9 +51,9 @@ public class View {
 
 							sel_list = dama.selectDama(login);// 리스트만 존재함 출력해야 확인가능
 							if (sel_list.size() == 0) {
-								System.out.println("관리 할 다마고치가 없어요!! \n다마고치를 등록해주세요..");
+								System.out.println("관리할 다마고치가 없어요! \n먼저 다마고치를 등록해주세요...");
 							} else {
-								System.out.println("===== 내 다마고치 =====");
+								System.out.println("===== 나의 다마고치 =====");
 								for (int i = 0; i < sel_list.size(); i++) {
 									System.out.println("\n---------" + (i + 1) + "번 다마고치" + "---------");
 									System.out.println(sel_list.get(i).toString());
@@ -66,11 +66,12 @@ public class View {
 								int needs = lc.DamaNeeds(); // needs에 욕망 인덱스 저장..
 
 								while (true) {// 키우기 그만할때 까지
-									System.out.println("현재 경험치 : " + sel_dama.getExp());
-									System.out.println("청결도 : " + sel_dama.getCleaning());
-									System.out.println("현재 에너지" + sel_dama.getEnergy());
-									System.out.println("현재 EXP" + sel_dama.getExp());
-									System.out.println("◆ 1.밥먹이기\t◆ 2.잠재우기\t◆ 3.놀아주기 \n◆ 4.운동시키기\t◆ 5.씻겨주기\t◆ 6.뒤로가기");
+									System.out.println("현재 경험치는? " + sel_dama.getExp());
+									System.out.println("현재 청결도는? " + sel_dama.getCleaning());
+									System.out.println("현재 에너지는? " + sel_dama.getEnergy());
+									System.out.println();
+									//System.out.println("현재 EXP : " + sel_dama.getExp());
+									System.out.println("◆ 1.식사 시간!\t◆ 2.잘 시간!\t◆ 3.놀이 시간! \n◆ 4.운동 시간!\t◆ 5.목욕 시간!\t◆ 6.목록으로 돌아가기");
 									lc.sel_need(sel_dama, needs);
 
 									System.out.println();
@@ -82,13 +83,13 @@ public class View {
 									
 									dama.DamaUpdate(sel_dama); // column.. energy, exp는 2자리 number 그렇다면.. 에너지는 더이상
 									if(sel_dama.getEnergy()>100) { // 차지않도록하고 .. 경험치는 바로 레벨로 전환될수잇도록.
-										System.out.println(sel_dama.getNick() + "(이)가 죽었어요..");
+										System.out.println(sel_dama.getNick() + "(이)가 더 이상 움직이지 않는다...");
 										break;
 									}
 								}
 							}
 						} else if (dama_menu == 3) {// 랭킹
-							System.out.println("===== 다마고찌 랭킹 =====");
+							System.out.println("===== 다마고치 랭킹 =====");
 							rank_list = dama.DamaRank(); // 리스트만 존재함 출력해야 확인가능
 							for (DamaDTO vo : rank_list) {
 								System.out.println(vo.toString());
@@ -96,9 +97,9 @@ public class View {
 						} else if (dama_menu == 4) { //삭제
 							sel_list = dama.selectDama(login);// 리스트만 존재함 출력해야 확인가능
 							if (sel_list.size() == 0) {
-								System.out.println("삭제 할 다마고치가 없어요!! \n다마고치를 등록해주세요..");
+								System.out.println("삭제 할 다마고치가 없어요! \n먼저 다마고치를 등록해주세요...");
 							} else {
-								System.out.println("===== 내 다마고찌 =====");
+								System.out.println("===== 내 다마고치 =====");
 								for (int i = 0; i < sel_list.size(); i++) {
 									System.out.println("\n---------" + (i + 1) + "번 다마고치" + "---------");
 									System.out.println(sel_list.get(i).toString());
@@ -106,19 +107,19 @@ public class View {
 								dama.deleteDama();
 							}
 						} else {
-							System.out.println("뒤로가기");
+							System.out.println("목록으로 돌아가기");
 							break;
 						}
 					}
 
 				}
-				System.out.println("로그인 실패!!");
+				System.out.println("로그인 실패! ID와 비밀번호를 다시 확인해 주세요.");
 			} else if (game_menu == 2) {
 				mem.insertMember();
 			}
 
 			else {
-				System.out.println("게임 종료");
+				System.out.println("다마고치 키우기를 종료합니다...");
 				break;
 			}
 
