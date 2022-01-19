@@ -55,11 +55,12 @@ public class View {
 							}
 							DamaDTO sel_dama = dama.select(sel_list);
 							System.out.println();
-							String needs = dama.DamaNeeds();
+//							String needs = dama.DamaNeeds();
 							while (true) {// 키우기 그만할때 까지
 								System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
 								lc.sel_need(sel_dama);
 								System.out.println("현재 에너지"+sel_dama.getEnergy());
+								System.out.println("\n");
 							}
 						} else if (dama_menu == 3) {// 랭킹
 							System.out.println("===== 다마고찌 랭킹 =====");

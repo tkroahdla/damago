@@ -191,16 +191,16 @@ public class DamaDAO {
 		return sc.nextInt();
 	}
 
-	public String DamaNeeds() { // 욕구
+	public int DamaNeeds() { // 욕구
 		Random r = new Random();
-		String[] needs = {"meal","sleep","exercies","cleaning","play"};
+		//String[] needs = {"meal","sleep","exercies","cleaning","play"};
 		int a =r.nextInt(5);
-		String need = needs[r.nextInt(5)];
+	//	String need = needs[r.nextInt(5)];
 		if(a==0) System.out.println("배고프다");
 		else if(a==1)System.out.println("자고싶다");
-		else if(a==2)System.out.println("운동하고싶다");
-		else  System.out.println("놀고싶다");
-		return need;
+		else if(a==2)System.out.println("놀고싶다");
+		else  System.out.println("운동하고싶다");
+		return a;
 	}
 	
 
