@@ -41,15 +41,15 @@ public class Logic_Controller {
 		return a;
 	}
 
-	public DamaDTO sel_need(DamaDTO vo, int needs) {
+	public DamaDTO sel_need(DamaDTO vo, int needs) {  //매개인자로 다마 객체와, 욕망 인덱스번호 받음. 여기서 needs는 밖에서 need메서드 호출하면 int가 나오는데 그것임
 		// int need = dama.DamaNeeds();
 		System.out.println("스테이트는 : " + vo.getState());
 		int input = getNumInput("무엇을 해줄까요??");
-		if (input == 6) { // 종료인 경우가 우선순위가 될 수 있도록 배치
-			vo.setStop(true);
-			return vo;
+		if (input == 6) { // 종료인 경우가 우선순위가 될 수 있도록 배치 // 종료인게 우선순위가 먼저여야 해서,, 그 다음 우선순위는 욕망 해결
+			vo.setStop(true); // 다마고치 필드에 stop이라고 값을 정의했어요,
+			return vo;	// 종료누르면 트루로 바꾸고 반환
 		}
-		if (vo.getState() == 1) {
+		if (vo.getState() == 1) { // 이건 getstate가 1일때. 왜냐하면 초기값이 0이라서 1인경우는 정상작동하는걸루..
 			if (input == 1) {
 				System.out.println("밥먹이기(에너지+30)");
 				energyplus(vo);
@@ -79,7 +79,7 @@ public class Logic_Controller {
 			return vo;
 		}
 
-		if (needs + 1 == input && vo.getState() == 0) {
+		if (needs + 1 == input && vo.getState() == 0) { //이건 욕망을 풀어주는 번호 눌럿을때 && 그리구 state상태가 0일때 0이라는건 욕망이 있다는뜻!
 			System.out.println(vo.getNick() + "(이)가 만족합니다...");
 			if (input == 1) {
 				System.out.println("밥먹이기(에너지+30) 경험치 없음.");
@@ -113,7 +113,7 @@ public class Logic_Controller {
 			vo.setState(1);
 			System.out.println(vo.getCleaning());
 		} else if (needs + 1 != input) {
-			System.out.println(vo.getNick() + "(이)가 삐졌다.");
+			System.out.println(vo.getNick() + "(이)가 삐졌다."); // 나머지는 욕망을 못들어주는 거기때문에 삐졋다고 출력함..
 			energyminus(vo); // 에너지 감소
 			return vo;
 		}
