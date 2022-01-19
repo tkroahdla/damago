@@ -111,7 +111,7 @@ public class DamaDAO {
 				int energy = rs.getInt("energy");
 				String id = rs.getString("id");
 				Date date = rs.getDate(7);
-				//System.out.println(date);
+				// System.out.println(date);
 				String needs = rs.getString("needs");
 
 				rank_list.add(new DamaDTO(nick, type, exp, level, energy, id, date));
@@ -193,16 +193,21 @@ public class DamaDAO {
 
 	public int DamaNeeds() { // 욕구
 		Random r = new Random();
-		//String[] needs = {"meal","sleep","exercies","cleaning","play"};
-		int a =r.nextInt(4);
-	//	String need = needs[r.nextInt(5)];
-		if(a==0) System.out.println("배고프다");
-		else if(a==1)System.out.println("자고싶다");
-		else if(a==2)System.out.println("놀고싶다");
-		else  System.out.println("운동하고싶다");
+		// String[] needs = {"meal","sleep","exercies","cleaning","play"};
+		int a = r.nextInt(4);
+		// String need = needs[r.nextInt(5)];
+		if (a == 0)
+			System.out.println("현재 상태 : 배고파!!\n");
+		else if (a == 1)
+			System.out.println("현재 상태 : 피곤해..\n");
+		else if (a == 2)
+			System.out.println("현재 상태 : 우오! 힘이 넘쳐흐른다!\n");
+		else if (a == 3)
+			System.out.println("현재 상태 : 심심해~ \n");
+		else
+			System.out.println("현재 상태 : 으악 더러워!!\n");
+
 		return a;
 	}
-	
-
 
 }

@@ -12,6 +12,7 @@ public class DamaDTO {
 	private int energy;// 에너지
 	private String id;// 아이디
 	private Date date;// 마지막 접속날짜
+	private int cleaning;
 
 	public DamaDTO(String nick, String type, int exp, int level, int energy, String id, Date date) {
 		super();// 부모클래스의 생성자 호출 (기본생성자)
@@ -26,6 +27,10 @@ public class DamaDTO {
 	
 	public void setEnergy(int energy) {
 		this.energy= energy;
+	}
+	
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 
 	public String getId() {

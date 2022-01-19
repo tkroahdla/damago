@@ -41,8 +41,10 @@ public class View {
 					// 여기부터 게임진행
 					
 					while (true) {
+						System.out.println("===========================");
 						System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹\n4.뒤로 가기");
 						System.out.println("===========================");
+						System.out.print("메뉴선택 >> ");
 						dama_menu = sc.nextInt();
 						if (dama_menu == 1) { // 등록
 							dama.insertDama(login);
@@ -51,16 +53,22 @@ public class View {
 							System.out.println("===== 내 다마고찌 =====");
 							sel_list = dama.selectDama(login); // 리스트만 존재함 출력해야 확인가능
 							for (int i = 0; i < sel_list.size(); i++) {
-								System.out.println((i + 1) + "번" + sel_list.get(i).toString());
+							//
+								System.out.println("---------"+ (i+1) +"번 다마고치"+"-------------------------------------------------------------------------------");
+								System.out.println(sel_list.get(i).toString());
 							}
 							DamaDTO sel_dama = dama.select(sel_list);
 							System.out.println();
-//							String needs = dama.DamaNeeds();
+							
+							int needs = dama.DamaNeeds();
 							while (true) {// 키우기 그만할때 까지
-								System.out.println("◆ 1.밥먹이기 \n◆ 2.잠재우기 \n◆ 3.놀아주기 \n◆ 4.운동하기 \n◆ 5.뒤로가기 ");
-								lc.sel_need(sel_dama);
+								//System.out.println("◆ 1.밥먹이기 \n◆ 2.잠재우기 \n◆ 3.놀아주기 \n◆ 4.운동하기 \n◆ 5.뒤로가기 \n");
+								System.out.println("◆ 1.밥먹이기\n◆ 2.잠재우기 \n◆ 3.놀아주기 \n◆ 4.운동시키기\n◆ 5.씻겨주기 \n◆ 6.뒤로가기");
+								lc.sel_need(sel_dama, needs);
 								System.out.println("현재 에너지"+sel_dama.getEnergy());
-								
+								System.out.println("현재 EXP"+sel_dama.getExp());
+								System.out.println();
+								needs = 9;
 							}
 						} else if (dama_menu == 3) {// 랭킹
 							System.out.println("===== 다마고찌 랭킹 =====");

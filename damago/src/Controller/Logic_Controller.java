@@ -11,46 +11,47 @@ public class Logic_Controller {
 	DamaDAO dama = new DamaDAO();
 	// System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
 
-	public DamaDTO sel_need(DamaDTO vo) {
-		int need = dama.DamaNeeds();
+	public DamaDTO sel_need(DamaDTO vo, int needs) {
+		// int need = dama.DamaNeeds();
 		int input = getNumInput("무엇을 해줄까요??");
-		if (need+1 != input) {
-			System.out.println(vo.getNick() + "(이)가 삐졌다.");
-			energytype1(vo); // 에너지 감소
-		} else {
+		if (needs == 9) {
 			if (input == 1) {
-				System.out.println("밥을 먹었어요.");
+				System.out.println("밥먹이기(에너지+30)");
 				energytype2(vo);
 			} else if (input == 2) {
-				System.out.println("잠을 잤어요.");
+				System.out.println("잠재우기(에너지+30)");
 				energytype2(vo);
 			} else if (input == 3) {
-				System.out.println("놀았어요.");
+				System.out.println("놀아주기(에너지-10)");
 				energytype1(vo);
 			} else if (input == 4) {
-				System.out.println("운동을 했어요."); // 이거 매끄럽게좀 바꿔주세용..
+				System.out.println("운동시키기(에너지-10)");
 				energytype1(vo);
+			} else if (input == 5) {
+				System.out.println("씻겨주기(에너지+30)");
+				energytype2(vo);
 			} else {
 				System.out.println("잘못된 입력이에요.");
 			}
+		} else if (needs + 1 != input) {
+			System.out.println(vo.getNick() + "(이)가 삐졌다.");
+			energytype1(vo); // 에너지 감소
 		}
+		
 		return vo;
 	}
 
 	public DamaDTO energytype1(DamaDTO vo) { // 에너지가 감소하는경우 (놀기, 운동)
 		vo.setEnergy(vo.getEnergy() - 10);
+		vo.setExp(vo.getExp() + 30);
 		return vo;
 	}
 
 	public DamaDTO energytype2(DamaDTO vo) {// 에너지가 증가하는경우 (밥먹기,잠자기)
 		vo.setEnergy(vo.getEnergy() + 30);
+		vo.setExp(vo.getExp() + 10);
 		return vo;
 	}
-
-//	private String getStrInput(String msg) {
-//		System.out.print(msg);
-//		return sc.nextLine();
-//	}
 
 	private int getNumInput(String msg) {
 		System.out.print(msg);
