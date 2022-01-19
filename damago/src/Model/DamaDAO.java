@@ -156,9 +156,7 @@ public class DamaDAO {
 				int level = rs.getInt("leb");
 				int exp = rs.getInt("exp");
 				int energy = rs.getInt("energy");
-				if(energy == -999) {
-					nick +=" (사망)";
-				}
+
 
 				Date date = rs.getDate(7);
 
@@ -178,7 +176,6 @@ public class DamaDAO {
 
 	public DamaDTO select(ArrayList<DamaDTO> list) { // 다마고치 선택 후 VO객체 반환
 		int input = getNumInput(" 선택할 다마고치 번호 :");
-		if(list.get(input - 1).getEnergy()==-999) return null;
 		return list.get(input - 1); // 리스트는 0부터니까 -1
 	}
 	
@@ -190,7 +187,7 @@ public class DamaDAO {
 	    	 String nick =getStrInput("삭제할 다마고치의 닉네임을 입력하세요 : ");
 	         connect();
 
-	         String sql = "delete from dama where nic = ?";
+	         String sql = "delete from dama where nick = ?";
 
 	         // SQL구문 실행 준비 객체(PreparedStatement) 생성
 	         // prepareStatement(정의할 sql);
@@ -204,6 +201,10 @@ public class DamaDAO {
 
 	         if (cnt > 0) { // 변경 성공
 	            check = true;
+	            System.out.println("삭제 성공!");
+	         }
+	         else {
+	        	 System.out.println("삭제 실패!");
 	         }
 
 	      } catch (Exception e) {
@@ -219,23 +220,21 @@ public class DamaDAO {
 		try {
 			connect();
 
-			String sql = "update dama set exp=?,leb=?,energy=? where id = ?";
+			String sql = "update dama set exp=?,leb=?,energy=? where nick = ?";
 
 			pst = conn.prepareStatement(sql);
 
 			pst.setInt(1, vo.getExp());
 			pst.setInt(2, vo.getLevel());
 			pst.setInt(3, vo.getEnergy());
-			pst.setString(4, vo.getId());
+			pst.setString(4, vo.getNick());
 
 			int cnt = pst.executeUpdate();
 
 			if (cnt > 0) { // 추가 성공
 				check = true;
-				System.out.println("생성 완료!");
 			} else { // 추가 실패
 				check = false;
-				System.out.println("생성 실패..");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

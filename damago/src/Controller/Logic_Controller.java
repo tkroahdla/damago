@@ -12,6 +12,12 @@ public class Logic_Controller {
 	DamaDAO dama = new DamaDAO();
 	// System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
 
+	
+	public boolean deathCheck(DamaDTO vo) {
+		if(vo.getEnergy()==999) return true;
+		return false;
+	}
+	
 	public DamaDTO expCheck(DamaDTO vo) {
 		if (vo.getExp() > 99) {
 			vo.setExp(vo.getExp() % 100);
@@ -21,34 +27,27 @@ public class Logic_Controller {
 	}
 	
 	public DamaDTO energyCheck(DamaDTO vo) {
+		if(vo.getEnergy()>100) {
+			System.out.println("더이상 에너지를 채울 수 없어요... ");
+			vo.setEnergy(100);
+		}
 		if(vo.getEnergy()< -50) {
 			System.out.println(vo.getNick()+"(은)는 움직이기 힘들어한다... ");
 		}
-		else if(vo.getEnergy()< -70) {
+		if(vo.getEnergy()< -70) {
 			System.out.println(vo.getNick()+"(은)는 축 처져있다...");
 		}
-		else if(vo.getEnergy()< -90) {
+		if(vo.getEnergy()< -90) {
 			System.out.println(vo.getNick()+"(은)는 힘이 없다...");
 		}
-		else if (vo.getEnergy() < -99) {
-			vo.setEnergy(-999);
+		if (vo.getEnergy() < -99) {
 			System.out.println(vo.getNick()+"(은)는 숨을 쉬지 않는다...");
+			vo.setEnergy(999);
+			//왜 다른것도 같이 바뀌지 
 		}
 		return vo;
 	}
 	
-	public boolean deathCheck(DamaDTO vo) {
-		if(vo.getEnergy()==-999) return true;
-		
-		return false;
-	}
-	
-	
-	
-	public DamaDTO dama_death(DamaDTO vo) {
-		return vo;
-		
-	}
 
 	public DamaDTO expPlus(DamaDTO vo) { // 경험치 증가
 		vo.setExp(vo.getExp() + 10);
