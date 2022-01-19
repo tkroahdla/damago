@@ -6,6 +6,7 @@ import java.util.Scanner;
 import Model.DamaDAO;
 import Model.DamaVO;
 import Model.MemberDAO;
+
 public class View {
 
 	public static void main(String[] args) {
@@ -35,50 +36,46 @@ public class View {
 				if (login != null) {
 					System.out.println("로그인 성공!!");
 					// 여기부터 게임진행
+					
 					while (true) {
 						System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹\n4.뒤로 가기");
 						System.out.println("===========================");
 						dama_menu = sc.nextInt();
-						if(dama_menu ==1) { // 등록
+						if (dama_menu == 1) { // 등록
 							dama.insertDama(login);
-						}
-						else if(dama_menu ==2) { // 관리
-							System.out.println("===== 내 다마고찌 ====="); 
+
+						} else if (dama_menu == 2) { // 관리
+							System.out.println("===== 내 다마고찌 =====");
 							sel_list = dama.selectDama(login); // 리스트만 존재함 출력해야 확인가능
-							//System.out.println(sel_list.size());
-							//System.out.println(login);
+							// System.out.println(sel_list.size());
+							// System.out.println(login);
 //							for(DamaVO vo : sel_list) {
 //								System.out.printf("%d %s",vo,vo.toString());
 //							}
-							for(int i = 0; i<sel_list.size(); i++) {
-								System.out.println((i+1)+"번"+sel_list.get(i).toString());
+							for (int i = 0; i < sel_list.size(); i++) {
+								System.out.println((i + 1) + "번" + sel_list.get(i).toString());
 							}
 							DamaVO sel_dama = dama.select(sel_list);
 							System.out.println();
-							String needs=dama.DamaNeeds();
-							while(true) {//키우기 그만할때 까지
+							String needs = dama.DamaNeeds();
+							while (true) {// 키우기 그만할때 까지
 								System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
-								
-								
+
 							}
-						}
-						else if(dama_menu ==3) {// 랭킹
-							System.out.println("===== 다마고찌 랭킹 ====="); 
+						} else if (dama_menu == 3) {// 랭킹
+							System.out.println("===== 다마고찌 랭킹 =====");
 							rank_list = dama.DamaRank(); // 리스트만 존재함 출력해야 확인가능
-							for(DamaVO vo : rank_list) {
+							for (DamaVO vo : rank_list) {
 								System.out.println(vo.toString());
 							}
-						}
-						else {
+						} else {
 							System.out.println("뒤로가기");
 							break;
 						}
 					}
 
-				} else {
-					System.out.println("로그인 실패!!");
 				}
-
+				System.out.println("로그인 실패!!");
 			} else if (game_menu == 2) {
 				mem.insertMember();
 			}
@@ -88,17 +85,6 @@ public class View {
 				break;
 			}
 
-			// if(check2==true) {
-
-			// 다마고찌 관리 메뉴선택 while(true) { System.out.print("메뉴선택 >> "); dama_menu =
-			sc.nextInt();
-
-			// 다마고찌 등록 if(dama_menu==1) { System.out.println("다마고찌 등록");
-			System.out.println("등록할 다마고찌 정보를 입력하세요.");
-			System.out.print("이름 : ");
-			String dama_name = sc.next();
-			System.out.print("종류 : "); // 속성은 어떤 종류가 있는걸로 할 것인지
-			String dama_type = sc.next();
 		}
 //			// User 로그인
 //			if (game_menu == 1) {
@@ -224,9 +210,9 @@ public class View {
 
 	public static void startpic() {
 		System.out.println();
-		System.out.println(",--------.                                         ,--.        ,--.     ,--.    "); 
-		System.out.println("'--.  .--',--,--.,--,--,--. ,--,--. ,---.  ,---. ,-'  '-. ,---.|  ,---. `--'    "); 
-		System.out.println("   |  |  ' ,-.  ||        |' ,-.  || .-. || .-. |'-.  .-'| .--'|  .-.  |,--.    "); 
+		System.out.println(",--------.                                         ,--.        ,--.     ,--.    ");
+		System.out.println("'--.  .--',--,--.,--,--,--. ,--,--. ,---.  ,---. ,-'  '-. ,---.|  ,---. `--'    ");
+		System.out.println("   |  |  ' ,-.  ||        |' ,-.  || .-. || .-. |'-.  .-'| .--'|  .-.  |,--.    ");
 		System.out.println("   |  |  \\ '-'  ||  |  |  |\\ '-'  |' '-' '' '-' '  |  |  \\ `--.|  | |  ||  | ");
 		System.out.println("   `--'   `--`--'`--`--`--' `--`--'.`-  /  `---'   `--'   `---'`--' `--'`--'    ");
 		System.out.println("                                   `---'                                        ");
