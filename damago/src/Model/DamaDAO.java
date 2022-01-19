@@ -22,7 +22,6 @@ public class DamaDAO {
 			String user = "campus_d_6_0115";
 			String password = "smhrd6";
 
-
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,9 +55,9 @@ public class DamaDAO {
 			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sysdate, ?)";
 			String nick = getStrInput(" 닉네임을 적어주세요 : ");
 			String type = getStrInput(" 타입을 적어주세요  : ");
-			//type이 varchar2(3)이라 엄청 작다 주의해서 넣자.
-			//이 문구 발견한다면 크기좀 늘려주세요
-			//밤이라 db서버가 꺼져있네요.
+			// type이 varchar2(3)이라 엄청 작다 주의해서 넣자.
+			// 이 문구 발견한다면 크기좀 늘려주세요
+			// 밤이라 db서버가 꺼져있네요.
 			pst = conn.prepareStatement(sql);
 
 			int exp = 0;
@@ -97,7 +96,6 @@ public class DamaDAO {
 		try {
 			connect();
 
-
 			String sql = "select * from dama";
 
 			pst = conn.prepareStatement(sql);
@@ -114,8 +112,8 @@ public class DamaDAO {
 				Date date = rs.getDate(7);
 				System.out.println(date);
 				String needs = rs.getString("needs");
-				
-				rank_list.add(new DamaVO(nick,type,exp,level, energy, id, date));
+
+				rank_list.add(new DamaVO(nick, type, exp, level, energy, id, date));
 			}
 
 		} catch (Exception e) {
@@ -126,7 +124,7 @@ public class DamaDAO {
 		return rank_list;
 	}
 
-	//로그인한 사람 다마고치 출력
+	// 로그인한 사람 다마고치 출력
 	public ArrayList<DamaVO> selectDama(String id) {
 		ArrayList<DamaVO> dama_list = new ArrayList<DamaVO>();
 
@@ -149,18 +147,18 @@ public class DamaDAO {
 
 			// dama 테이블의 값을 읽어서 출력
 			while (rs.next()) {
-				//int num = rs.getInt(1); // 커서가 가리키고 있는 행의 첫번째 column값을 읽어옴
+				// int num = rs.getInt(1); // 커서가 가리키고 있는 행의 첫번째 column값을 읽어옴
 				String nick = rs.getString("nick");
 				String type = rs.getString("type");
 				int level = rs.getInt("leb");
 				int exp = rs.getInt("exp");
 				int energy = rs.getInt("energy");
-				
+
 				Date date = rs.getDate(7);
 
 				// 위에서 읽어온 값들로 초기화시켜 생성한 DamaVO 객체의 참조값을
 				// ArrayList에 추가
-				dama_list.add(new DamaVO( nick,type, exp,level, energy, id, date));
+				dama_list.add(new DamaVO(nick, type, exp, level, energy, id, date));
 			}
 
 		} catch (Exception e) {
@@ -170,22 +168,21 @@ public class DamaDAO {
 			close();
 		}
 		return dama_list;
-	}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// 객체들 마무리(Connection, PreparedStatement, ResultSet)
-			close();
-		}
-		return dama_list;
+//	}catch(Exception e)
+//	{
+//		e.printStackTrace();
+//	}finally
+//	{
+//		// 객체들 마무리(Connection, PreparedStatement, ResultSet)
+//		close();
+//	}return dama_list;
 	}
 
 	private String getStrInput(String msg) {
 		System.out.print(msg);
 		return sc.nextLine();
 	}
-
+	
 	private int getNumInput(String msg) {
 		System.out.print(msg);
 		return sc.nextInt();
