@@ -34,7 +34,7 @@ public class View {
 			game_menu = sc.nextInt();
 			// User 로그인
 			if (game_menu == 1) {
-				System.out.println("\n=====로 그 인=====");
+				System.out.println("\n===== 로 그 인 =====");
 				login = mem.Login();
 				if (login != null) {
 					System.out.println("로그인 성공!!");
@@ -48,11 +48,10 @@ public class View {
 							dama.insertDama(login);
 
 						} else if (dama_menu == 2) { // 관리
-							System.out.println("===== 내 다마고찌 =====");
 							sel_list = dama.selectDama(login); // 리스트만 존재함 출력해야 확인가능
 							for (int i = 0; i < sel_list.size(); i++) {
 								//
-								System.out.println("---------" + (i + 1) + "번 다마고치"
+								System.out.println("\n---------" + (i + 1) + "번 다마고치"
 										+ "---------");
 								System.out.println(sel_list.get(i).toString());
 							}
@@ -104,7 +103,7 @@ public class View {
 		System.out.println(",--------.                                         ,--.        ,--.     ,--.    ");
 		System.out.println("'--.  .--',--,--.,--,--,--. ,--,--. ,---.  ,---. ,-'  '-. ,---.|  ,---. `--'    ");
 		System.out.println("   |  |  ' ,-.  ||        |' ,-.  || .-. || .-. |'-.  .-'| .--'|  .-.  |,--.    ");
-		System.out.println("   |  |  \\ '-'  ||  |  |  |\\ '-'  |' '-' '' '-' '  |  |  \\ `--.|  | |  ||  | ");
+		System.out.println("   |  |  \\ '-'  || |  |  |\\ '-'  | ' ' /' ' '-'  '  |  | \\``|  | |  ||  |    ");
 		System.out.println("   `--'   `--`--'`--`--`--' `--`--'.`-  /  `---'   `--'   `---'`--' `--'`--'    ");
 		System.out.println("                                   `---'                                        ");
 	}
