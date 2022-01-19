@@ -21,7 +21,7 @@ public class Logic_Controller {
 		vo.setCleaning(vo.getCleaning() - 10);
 		return vo;
 	}
-	
+
 	public int DamaNeeds() { // 욕구
 		Random r = new Random();
 		// String[] needs = {"meal","sleep","exercies","cleaning","play"};
@@ -43,10 +43,10 @@ public class Logic_Controller {
 
 	public DamaDTO sel_need(DamaDTO vo, int needs) {
 		// int need = dama.DamaNeeds();
-		System.out.println("스테이트는 : "+vo.getState());
+		System.out.println("스테이트는 : " + vo.getState());
 		int input = getNumInput("무엇을 해줄까요??");
-		
-		if(vo.getState()==1) {
+
+		if (vo.getState() == 1) {
 			if (input == 1) {
 				System.out.println("밥먹이기(에너지+30)");
 				energyplus(vo);
@@ -69,19 +69,22 @@ public class Logic_Controller {
 			} else if (input == 5) {
 				System.out.println("씻겨주기(에너지+30)");
 				energyplus(vo);
-			//	cleaning(vo);
+				// cleaning(vo);
+			} else if (input == 6) {
+				vo.setStop(true);
+				return vo;
 			} else {
 				System.out.println("잘못된 입력이에요.");
 			}
 			return vo;
-			}
-		
-		if(needs+1 == input && vo.getState()==0) {
-			System.out.println(vo.getNick()+"(이)가 만족합니다...");
+		}
+
+		if (needs + 1 == input && vo.getState() == 0) {
+			System.out.println(vo.getNick() + "(이)가 만족합니다...");
 			if (input == 1) {
 				System.out.println("밥먹이기(에너지+30) 경험치 없음.");
 				energyplus(vo);
-				//expPlus(vo);
+				// expPlus(vo);
 				cleaning(vo);
 			} else if (input == 2) {
 				System.out.println("잠재우기(에너지+30) 경험치 없음.");
@@ -90,29 +93,31 @@ public class Logic_Controller {
 			} else if (input == 3) {
 				System.out.println("놀아주기(에너지-10) 경험치 없음.");
 				energyminus(vo);
-				//expPlus(vo);
+				// expPlus(vo);
 				cleaning(vo);
 			} else if (input == 4) {
 				System.out.println("운동시키기(에너지-10) 경험치 없음.");
 				energyminus(vo);
-				//expPlus(vo);
+				// expPlus(vo);
 				cleaning(vo);
 			} else if (input == 5) {
 				System.out.println("씻겨주기(에너지+30) 경험치 없음.");
 				energyplus(vo);
-			//	cleaning(vo);
+				// cleaning(vo);
+			} else if (input == 6) {
+				vo.setStop(true);
+				return vo;
 			} else {
 				System.out.println("잘못된 입력이에요.");
 			}
 			vo.setState(1);
 			System.out.println(vo.getCleaning());
-		}
-		else if (needs + 1 != input) {
+		} else if (needs + 1 != input) {
 			System.out.println(vo.getNick() + "(이)가 삐졌다.");
 			energyminus(vo); // 에너지 감소
 			return vo;
 		}
-		
+
 		return vo;
 	}
 
@@ -129,14 +134,15 @@ public class Logic_Controller {
 	public DamaDTO exptype1(DamaDTO vo) {
 		vo.setExp(vo.getExp() + 10);
 		return vo;
-		
+
 	}
+
 	public DamaDTO exptype2(DamaDTO vo) {
 		vo.setExp(vo.getExp() + 30);
 		return vo;
-		
+
 	}
-	
+
 	private int getNumInput(String msg) {
 		System.out.print(msg);
 		return sc.nextInt();

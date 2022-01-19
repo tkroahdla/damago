@@ -13,7 +13,8 @@ public class DamaDTO {
 	private String id;// 아이디
 	private Date date;// 마지막 접속날짜
 	private int cleaning=100;
-	private int state = 0;
+	private int state;
+	private boolean stop;
 
 	public DamaDTO(String nick, String type, int exp, int level, int energy, String id, Date date) {
 		super();// 부모클래스의 생성자 호출 (기본생성자)
@@ -24,9 +25,19 @@ public class DamaDTO {
 		this.energy = energy;
 		this.id = id;
 		this.date = date;
-		state= 0;
+		this.state= 0;
+		this.stop= false;
+		
 	}
 	
+	public boolean isStop() {
+		return stop;
+	}
+
+	public void setStop(boolean stop) {
+		this.stop = stop;
+	}
+
 	public int getState() {
 		return state;
 	}
