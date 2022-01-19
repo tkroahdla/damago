@@ -177,6 +177,63 @@ public class DamaDAO {
 		return list.get(input - 1); // 리스트는 0부터니까 -1
 	}
 
+	public boolean DamaUpdate(DamaDTO vo) {  //업데이트해야하는것이 무엇인가. 경험치 레벨 에너지 업데이트해야함
+		
+		try {
+			connect();
+
+			// 3. 실행할 SQL문 정의
+			String sql = "update * from dama where id = ?";
+
+			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
+			// prepareStatement(정의할 sql);
+			pst = conn.prepareStatement(sql);
+
+			// 바인드 변수 채우기
+			pst.setString(1, id);
+			// 5. sql문을 실행하고 결과 처리
+			// executeQuery : select -> 검색(table상에 변화가 일어나지 않음)
+//			// 반환타입 : ResultSet이라는 객체를 반환
+//			rs = pst.executeQuery();
+//
+//			// dama 테이블의 값을 읽어서 출력
+//			while (rs.next()) {
+//				// int num = rs.getInt(1); // 커서가 가리키고 있는 행의 첫번째 column값을 읽어옴
+//				String nick = rs.getString("nick");
+//				String type = rs.getString("type");
+//				int level = rs.getInt("leb");
+//				int exp = rs.getInt("exp");
+//				int energy = rs.getInt("energy");
+//
+//				Date date = rs.getDate(7);
+//
+//				// 위에서 읽어온 값들로 초기화시켜 생성한 DamaVO 객체의 참조값을
+//				// ArrayList에 추가
+//				dama_list.add(new DamaDTO(nick, type, exp, level, energy, id, date));
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			// 객체들 마무리(Connection, PreparedStatement, ResultSet)
+//			close();
+//		}
+//		return dama_list;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return false;
+		
+		
+	}
+	
 	public void insertNeeds(DamaDTO vo) {
 
 	}
