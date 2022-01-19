@@ -98,7 +98,7 @@ public class DamaDTO {
 
 	@Override
 	public String toString() {
-		return "레벨 : " + level + "\n 이름 : " + nick + "\n(id : " + id + ")" + "\n타입 : " + type + "\n경험치 : " + exp
+		return "레벨 : " + level + "\n이름 : " + nick + "\n사용자 : " + id + "\n타입  : " + type + "\n경험치 : " + exp
 	            + "\n에너지 : " + energy + "\n생성일 : " + date + "\n---------------------------";
 	}
 

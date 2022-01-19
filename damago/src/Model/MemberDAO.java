@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class MemberDAO {
 
@@ -52,10 +54,9 @@ public class MemberDAO {
 	}
 
 	public String Login() {
-	
 		try {
 			connect();
-			
+
 			String SQL = "Select id, password From user_info where id = ?";
 
 			String id = getStrInput("ID :  ");
@@ -75,14 +76,63 @@ public class MemberDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace(); // 예외처리
-		}finally {
+		} finally {
 			close();
 		}
 		return null;
 	}
+
+	public void last_date(String id) {
+		try {
+
+			connect();
+
+			String SQL = "Select last_date From user_info where id = ?";
+
+			pst = conn.prepareStatement(SQL);
+			pst.setString(1, id);
+
+			rs = pst.executeQuery();
+
+			if (rs.next()) {
+				String dt = rs.getString(1);
+				System.out.println("최종 접속시간 : "+ dt);
+				
+			} 
+		} catch (Exception e) {
+			e.printStackTrace(); // 예외처리
+		} finally {
+			close();
+		}
+		//return null;
+	}
 	
-	public boolean insertMember() {
+	public void sysdate_update(String id) {
+		try {
+			connect();
+
+			String sql = "update user_info set last_date=sysdate where id=?";
+
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, id);
+
+			int cnt = pst.executeUpdate(); // 매개변수없다. 매개변수로 sql을 넣어놨어요..(sql)이렇게.. 자동으로 넣어주길래 엔터쳐버렷네여
+			if (cnt > 0) {
+				System.out.println("최종접속날짜 삽입 성공");
+			}
+			else {
+				System.out.println("최종접속날짜 삽입 실패");
+			}
 		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
+
+	public boolean insertMember() {
+
 		String id = getStrInput("    ID :  ");
 		int pw = getNumInput("PassWord :  ");
 		boolean check = false;
@@ -114,7 +164,6 @@ public class MemberDAO {
 
 	}
 
-
 	private String getStrInput(String msg) {
 		System.out.print(msg);
 		return sc.next();
@@ -124,9 +173,5 @@ public class MemberDAO {
 		System.out.print(msg);
 		return sc.nextInt();
 	}
-
-
-
-
 
 }

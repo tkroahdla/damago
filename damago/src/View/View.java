@@ -35,6 +35,7 @@ public class View {
 			if (game_menu == 1) {
 				System.out.println("\n===== 로 그 인 =====");
 				login = mem.Login();
+				mem.last_date(login);
 				if (login != null) {
 					System.out.println("로그인 성공!!! 당신의 다마고치를 키워보세요.");
 					while (true) {
@@ -148,7 +149,7 @@ public class View {
 				System.out.println("다마고치 키우기를 종료합니다...");
 				break;
 			}
-
+			mem.sysdate_update(login);
 		}
 	}
 

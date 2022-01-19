@@ -157,7 +157,7 @@ public class DamaDAO {
 				int exp = rs.getInt("exp");
 				int energy = rs.getInt("energy");
 				if(energy == 999) {
-					nick += "(»ç¸Á)";
+					nick += "  (»ç¸Á »óÅÂ)";
 				}
 
 				Date date = rs.getDate(7);
