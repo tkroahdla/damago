@@ -77,6 +77,7 @@ public class View {
 								if(sel_dama.isStop()) {
 									break; //뒤로가기.
 								}
+								//dama.DamaUpdate(sel_dama); // column.. energy, exp는 2자리 number 그렇다면.. 에너지는 더이상 차지않도록하고 .. 경험치는 바로 레벨로 전환될수잇도록.
 							}
 						} else if (dama_menu == 3) {// 랭킹
 							System.out.println("===== 다마고찌 랭킹 =====");
