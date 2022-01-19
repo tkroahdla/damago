@@ -77,41 +77,31 @@ public class View {
 										lc.sel_need(sel_dama, needs);
 
 										System.out.println();
-										while (true) {// 키우기 그만할때 까지
-											System.out.println("현재 경험치 : " + sel_dama.getExp());
-											System.out.println("청결도 : " + sel_dama.getCleaning());
-											System.out.println("현재 에너지" + sel_dama.getEnergy());
-											System.out.println("현재 EXP" + sel_dama.getExp());
-											System.out.println(
-													"◆ 1.밥먹이기\t◆ 2.잠재우기\t◆ 3.놀아주기 \n◆ 4.운동시키기\t◆ 5.씻겨주기\t◆ 6.뒤로가기");
-											lc.sel_need(sel_dama, needs);
-
-											System.out.println();
-											if (sel_dama.isStop()) {
-												break; // 뒤로가기.
-											}
-											lc.energyCheck(sel_dama);
-											lc.expCheck(sel_dama);
-
-											dama.DamaUpdate(sel_dama); // column.. energy, exp는 2자리 number 그렇다면.. 에너지는
-																		// 더이상
-											if (sel_dama.getEnergy() > 100) { // 차지않도록하고 .. 경험치는 바로 레벨로 전환될수잇도록.
-												System.out.println(sel_dama.getNick() + "(이)가 죽었어요..");
-												break;
-											}
-											if (sel_dama.isStop()) {
-												break; // 뒤로가기.
-											}
-											lc.energyCheck(sel_dama);
-											lc.expCheck(sel_dama);
-
-											dama.DamaUpdate(sel_dama); // column.. energy, exp는 2자리 number 그렇다면.. 에너지는
-																		// 더이상
-											if (sel_dama.getEnergy() > 100) { // 차지않도록하고 .. 경험치는 바로 레벨로 전환될수잇도록.
-												System.out.println(sel_dama.getNick() + "(이)가 더 이상 움직이지 않는다...");
-												break;
-											}
+										if (sel_dama.isStop()) {
+											break; // 뒤로가기.
 										}
+										lc.energyCheck(sel_dama);
+										lc.expCheck(sel_dama);
+
+										dama.DamaUpdate(sel_dama); // column.. energy, exp는 2자리 number 그렇다면.. 에너지는
+																	// 더이상
+										if (sel_dama.getEnergy() > 100) { // 차지않도록하고 .. 경험치는 바로 레벨로 전환될수잇도록.
+											System.out.println(sel_dama.getNick() + "(이)가 죽었어요..");
+											break;
+										}
+										if (sel_dama.isStop()) {
+											break; // 뒤로가기.
+										}
+										lc.energyCheck(sel_dama);
+										lc.expCheck(sel_dama);
+
+										dama.DamaUpdate(sel_dama); // column.. energy, exp는 2자리 number 그렇다면.. 에너지는
+																	// 더이상
+										if (sel_dama.getEnergy() > 100) { // 차지않도록하고 .. 경험치는 바로 레벨로 전환될수잇도록.
+											System.out.println(sel_dama.getNick() + "(이)가 더 이상 움직이지 않는다...");
+											break;
+										}
+
 									}
 								}
 							}
@@ -149,7 +139,7 @@ public class View {
 				System.out.println("다마고치 키우기를 종료합니다...");
 				break;
 			}
-			mem.sysdate_update(login);
+
 		}
 	}
 
