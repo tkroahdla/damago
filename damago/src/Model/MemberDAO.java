@@ -114,49 +114,6 @@ public class MemberDAO {
 
 	}
 
-	private boolean idCheck(String id) {// 아이디체크
-
-		boolean check = true;
-		MemberDTO member = FindById(id);
-		if (member == null)
-			check = false;
-		return check;
-	}
-
-
-
-	private MemberDTO FindById(String id) {
-		for (MemberDTO memberDTO : members) {
-			if (memberDTO.getId().equals(id)) {
-				return memberDTO;
-			}
-		}
-		return null;
-	}
-
-//	private void Rank() {
-//	}
-
-	int game_menu;
-
-
-//	public void Login() {
-//		System.out.print("메뉴선택 >> ");
-//		game_menu = sc.nextInt();
-//
-//		String id = getStrInput("      ID : ");
-//		String pw = getStrInput("PassWord : ");
-//
-//		MemberDTO member = FindById(id);
-//
-//		if (member == null) {
-//			System.out.println("등록되지 않은 ID입니다.");
-//		} else if (member.getPw().equals(pw)) { // 아이디 비번 모두 맞았을때
-//			System.out.println("[" + member.getId() + "]님께서 로그인 하셨습니다.");
-//		} else {
-//			System.out.println("비밀번호가 틀렸습니다.");
-//		}
-//	}
 
 	private String getStrInput(String msg) {
 		System.out.print(msg);

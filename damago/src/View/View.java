@@ -23,6 +23,7 @@ public class View {
 		String login = null;
 		// 메인 페이지 메뉴선택
 		while (true) {
+			startpic();
 			System.out.println("===== 다마고찌 키우기 게임 =====");
 			System.out.println("1.로그인\n2.회원가입\n3.게임종료");
 			System.out.println("==========================");
@@ -52,7 +53,11 @@ public class View {
 							for(int i = 0; i<sel_list.size(); i++) {
 								System.out.println((i+1)+"번"+sel_list.get(i).toString());
 							}
+							DamaVO sel_dama = dama.select(sel_list);
+							String needs=dama.DamaNeeds();
 							while(true) {//키우기 그만할때 까지
+								System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기");
+								
 								
 							}
 						}
@@ -217,7 +222,7 @@ public class View {
 
 	}
 
-	public void startpic() {
+	public static void startpic() {
 		System.out.println();
 		System.out.println(",--------.                                         ,--.        ,--.     ,--.    "); 
 		System.out.println("'--.  .--',--,--.,--,--,--. ,--,--. ,---.  ,---. ,-'  '-. ,---.|  ,---. `--'    "); 

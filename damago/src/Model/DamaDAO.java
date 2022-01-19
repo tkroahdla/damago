@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class DamaDAO {
@@ -170,16 +171,36 @@ public class DamaDAO {
 		return dama_list;
 	}
 
-		
-	
+	public DamaVO select(ArrayList<DamaVO> list) { // 다마고치 선택 후 VO객체 반환
+		int input = getNumInput(" 선택할 다마고치 번호 :");
+
+		return list.get(input - 1); // 리스트는 0부터니까 -1
+	}
+
+	public void insertNeeds(DamaVO vo) {
+
+	}
 
 	private String getStrInput(String msg) {
 		System.out.print(msg);
 		return sc.nextLine();
 	}
-	
+
 	private int getNumInput(String msg) {
 		System.out.print(msg);
 		return sc.nextInt();
 	}
+
+	public String DamaNeeds() { // 욕구
+		Random r = new Random();
+		String[] needs = {"meal","sleep","exercies","cleaning","play"};
+		int a =r.nextInt(5);
+		String need = needs[r.nextInt(5)];
+		if(a==0) System.out.println("배고프다");
+		else if(a==1)System.out.println("자고싶다");
+		else if(a==2)System.out.println("운동하고싶다");
+		else  System.out.println("놀고싶다");
+		return need;
+	}
+
 }

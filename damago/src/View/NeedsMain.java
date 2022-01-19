@@ -3,19 +3,19 @@ package View;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Model.DamaNeeds;
+import Model.DamaDAO;
 
-public class NeedsMain extends DamaNeeds{
+public class NeedsMain extends DamaDAO{
 	
-	ArrayList<DamaNeeds> needList = new ArrayList<DamaNeeds>();
+	ArrayList<DamaDAO> needList = new ArrayList<DamaDAO>();
 	Random r = new Random();
 	
 	// ¸Þ¼Òµå : ¿å±¸ Ãß°¡, ·£´ý»Ì±â
-	public void addNeed(DamaNeeds need) {
+	public void addNeed(DamaDAO need) {
 		needList.add(need);
 	}
 	
-	public DamaNeeds getNeed() {
+	public DamaDAO getNeed() {
 		int ran = r.nextInt(needList.size());
 		return needList.get(ran);
 	}
