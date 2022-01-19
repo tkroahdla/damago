@@ -29,8 +29,6 @@ public class View {
 			System.out.print("메뉴선택 >> ");
 			game_menu = sc.nextInt();
 			// User 로그인
-			
-			
 			if (game_menu == 1) {
 				System.out.println("\n=====로 그 인=====");
 				login = mem.Login();
@@ -41,22 +39,24 @@ public class View {
 						System.out.println("1.다마고찌 등록\n2.다마고찌 관리\n3.다마고찌 랭킹\n4.뒤로 가기");
 						System.out.println("===========================");
 						dama_menu = sc.nextInt();
-						if(dama_menu ==1) {
+						if(dama_menu ==1) { // 등록
 							dama.insertDama(login);
-							
 						}
-						else if(dama_menu ==2) {
+						else if(dama_menu ==2) { // 관리
 							sel_list = dama.selectDama(login); // 리스트만 존재함 출력해야 확인가능
 							System.out.println(sel_list.size());
 							System.out.println(login);
-							for(DamaVO vo : sel_list) {
-								System.out.println(vo.toString());
+//							for(DamaVO vo : sel_list) {
+//								System.out.printf("%d %s",vo,vo.toString());
+//							}
+							for(int i = 0; i<sel_list.size(); i++) {
+								System.out.println((i+1)+"번"+sel_list.get(i).toString());
 							}
 							while(true) {//키우기 그만할때 까지
 								
 							}
 						}
-						else if(dama_menu ==3) {
+						else if(dama_menu ==3) {// 랭킹
 							rank_list = dama.DamaRank(); // 리스트만 존재함 출력해야 확인가능
 							for(DamaVO vo : rank_list) {
 								System.out.println(vo.toString());

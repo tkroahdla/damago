@@ -3,18 +3,17 @@ package Model;
 import java.sql.Date;
 
 public class DamaVO {
-	//필드 :  별명,종류,경험치,레벨,포만감,에너지
-	
-	private String nick; //별명
-	private String type; //종류
-	private int exp;//경험치
-	private int level;//레벨
-	private int energy;//에너지
-	private String id;//아이디
-	private Date date;//마지막 접속날짜
-	
-	
-	public	DamaVO(String nick, String type, int exp, int level,int energy,String id, Date date) {
+	// 필드 : 별명,종류,경험치,레벨,포만감,에너지
+
+	private String nick; // 별명
+	private String type; // 종류
+	private int exp;// 경험치
+	private int level;// 레벨
+	private int energy;// 에너지
+	private String id;// 아이디
+	private Date date;// 마지막 접속날짜
+
+	public DamaVO(String nick, String type, int exp, int level, int energy, String id, Date date) {
 		super();// 부모클래스의 생성자 호출 (기본생성자)
 		this.nick = nick;
 		this.type = type;
@@ -24,7 +23,7 @@ public class DamaVO {
 		this.id = id;
 		this.date = date;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -55,9 +54,8 @@ public class DamaVO {
 
 	@Override
 	public String toString() {
-		return "DamaVO [nick=" + nick + ", type=" + type + ", exp=" + exp + ", level=" + level + ", energy=" + energy
-				+ ", id=" + id + ", date=" + date + "]";
-	};
-	
-	
+		return "===== 내 다마고찌 ===== \n레벨 : " + level + "\n이름 : " + nick + "\n타입 : " + type + "\n경험치 : " + exp
+				+ "\n에너지 : " + energy + "\n생성일 : " + date + "\n====================" + "\n";
+	}
+
 }
