@@ -117,7 +117,7 @@ public class MemberDAO {
 
 	private String getStrInput(String msg) {
 		System.out.print(msg);
-		return sc.nextLine();
+		return sc.next();
 	}
 
 	private int getNumInput(String msg) {

@@ -53,7 +53,7 @@ public class View {
 							for (int i = 0; i < sel_list.size(); i++) {
 								//
 								System.out.println("---------" + (i + 1) + "번 다마고치"
-										+ "-------------------------------------------------------------------------------");
+										+ "---------");
 								System.out.println(sel_list.get(i).toString());
 							}
 							DamaDTO sel_dama = dama.select(sel_list);
