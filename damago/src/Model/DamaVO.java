@@ -55,8 +55,8 @@ public class DamaVO {
 
 	@Override
 	public String toString() {
-		return "DamaVO [nick=" + nick + ", type=" + type + ", exp=" + exp + ", level=" + level + ", energy=" + energy
-				+ ", id=" + id + ", date=" + date + "]";
+		return "===== 내 다마고찌 ===== \n레벨 : " + level + "\n이름 : " + nick + "\n타입 : " + type + "\n경험치 : " + exp + "\n에너지 : " + energy
+				+ "\n생성일 : " + date + "\n===================="+ "\n";
 	};
 	
 	
