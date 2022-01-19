@@ -3,6 +3,7 @@ package View;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Controller.Logic_Controller;
 import Model.DamaDAO;
 import Model.DamaDTO;
 import Model.MemberDAO;
@@ -12,10 +13,12 @@ public class View {
 	public static void main(String[] args) {
 		ArrayList<DamaDTO> sel_list = null;
 		ArrayList<DamaDTO> rank_list;
-		String id = null;
-		int pw = 0;
 		DamaDAO dama = new DamaDAO();
 		MemberDAO mem = new MemberDAO();
+		Logic_Controller lc = new Logic_Controller();
+		String id = null;
+		int pw = 0;
+		
 		int input = 0;
 		Scanner sc = new Scanner(System.in);
 		int game_menu;
@@ -55,10 +58,8 @@ public class View {
 							String needs = dama.DamaNeeds();
 							while (true) {// 키우기 그만할때 까지
 								System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
-								
-								
-								
-								
+								lc.sel_need(sel_dama);
+								System.out.println("현재 에너지"+sel_dama.getEnergy());
 							}
 						} else if (dama_menu == 3) {// 랭킹
 							System.out.println("===== 다마고찌 랭킹 =====");
