@@ -194,7 +194,7 @@ public class DamaDAO {
 	public int DamaNeeds() { // 욕구
 		Random r = new Random();
 		//String[] needs = {"meal","sleep","exercies","cleaning","play"};
-		int a =r.nextInt(5);
+		int a =r.nextInt(4);
 	//	String need = needs[r.nextInt(5)];
 		if(a==0) System.out.println("배고프다");
 		else if(a==1)System.out.println("자고싶다");

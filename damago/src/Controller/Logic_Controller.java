@@ -12,9 +12,9 @@ public class Logic_Controller {
 	// System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
 
 	public DamaDTO sel_need(DamaDTO vo) {
-		int need = dama.DamaNeeds(); // 밥먹구할게용
+		int need = dama.DamaNeeds();
 		int input = getNumInput("무엇을 해줄까요??");
-		if (need != input) {
+		if (need+1 != input) {
 			System.out.println(vo.getNick() + "(이)가 삐졌다.");
 			energytype1(vo); // 에너지 감소
 		} else {
