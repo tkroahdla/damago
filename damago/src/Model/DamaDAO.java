@@ -168,22 +168,10 @@ public class DamaDAO {
 			close();
 		}
 		return dama_list;
-<<<<<<< HEAD
 	}
 
 		
 	
-=======
-//	}catch(Exception e)
-//	{
-//		e.printStackTrace();
-//	}finally
-//	{
-//		// 객체들 마무리(Connection, PreparedStatement, ResultSet)
-//		close();
-//	}return dama_list;
-	}
->>>>>>> branch 'master' of https://github.com/tkroahdla/damago.git
 
 	private String getStrInput(String msg) {
 		System.out.print(msg);
