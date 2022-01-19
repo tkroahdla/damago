@@ -19,13 +19,13 @@ public class DamaNeeds {
 	
 	public class exercise extends DamaNeeds{
 		public void need() {
-			System.out.println("운동하고싶다");
+			System.out.println("놀고싶다");
 		}
 	}
 	
 	public class play extends DamaNeeds{
 		public void need() {
-			System.out.println("놀고싶다");
+			System.out.println("운동하고싶다");
 		}
 	}
 	

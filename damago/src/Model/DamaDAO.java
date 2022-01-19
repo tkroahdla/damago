@@ -194,7 +194,7 @@ public class DamaDAO {
 	public int DamaNeeds() { // 욕구
 		Random r = new Random();
 		// String[] needs = {"meal","sleep","exercies","cleaning","play"};
-		int a = r.nextInt(4);
+		int a = r.nextInt(6);
 		// String need = needs[r.nextInt(5)];
 		if (a == 0)
 			System.out.println("현재 상태 : 배고파!!\n");
@@ -204,7 +204,7 @@ public class DamaDAO {
 			System.out.println("현재 상태 : 우오! 힘이 넘쳐흐른다!\n");
 		else if (a == 3)
 			System.out.println("현재 상태 : 심심해~ \n");
-		else
+		else if (a == 4)
 			System.out.println("현재 상태 : 으악 더러워!!\n");
 
 		return a;
