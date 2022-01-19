@@ -47,11 +47,6 @@ public class View {
 						} else if (dama_menu == 2) { // 관리
 							System.out.println("===== 내 다마고찌 =====");
 							sel_list = dama.selectDama(login); // 리스트만 존재함 출력해야 확인가능
-							// System.out.println(sel_list.size());
-							// System.out.println(login);
-//							for(DamaVO vo : sel_list) {
-//								System.out.printf("%d %s",vo,vo.toString());
-//							}
 							for (int i = 0; i < sel_list.size(); i++) {
 								System.out.println((i + 1) + "번" + sel_list.get(i).toString());
 							}

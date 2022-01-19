@@ -23,6 +23,10 @@ public class DamaDTO {
 		this.id = id;
 		this.date = date;
 	}
+	
+	public void setEnergy(int energy) {
+		this.energy+=energy;
+	}
 
 	public String getId() {
 		return id;

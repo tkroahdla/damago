@@ -202,5 +202,7 @@ public class DamaDAO {
 		else  System.out.println("³î°í½Í´Ù");
 		return need;
 	}
+	
+
 
 }
