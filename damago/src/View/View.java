@@ -61,8 +61,7 @@ public class View {
 							DamaDTO sel_dama = dama.select(sel_list);
 							System.out.println();
 
-							int needs = dama.DamaNeeds(); // needs에 욕망 인덱스 저장..
-							int state = 0;
+							int needs = lc.DamaNeeds(); // needs에 욕망 인덱스 저장..
 						
 							while (true) {// 키우기 그만할때 까지
 								System.out.println("현재 경험치 : " + sel_dama.getExp());
