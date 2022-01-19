@@ -156,6 +156,9 @@ public class DamaDAO {
 				int level = rs.getInt("leb");
 				int exp = rs.getInt("exp");
 				int energy = rs.getInt("energy");
+				if(energy == -999) {
+					nick +=" (사망)";
+				}
 
 				Date date = rs.getDate(7);
 
@@ -175,7 +178,7 @@ public class DamaDAO {
 
 	public DamaDTO select(ArrayList<DamaDTO> list) { // 다마고치 선택 후 VO객체 반환
 		int input = getNumInput(" 선택할 다마고치 번호 :");
-
+		if(list.get(input - 1).getEnergy()==-999) return null;
 		return list.get(input - 1); // 리스트는 0부터니까 -1
 	}
 
@@ -217,7 +220,7 @@ public class DamaDAO {
 
 	private String getStrInput(String msg) {
 		System.out.print(msg);
-		return sc.nextLine();
+		return sc.next();
 	}
 
 	private int getNumInput(String msg) {

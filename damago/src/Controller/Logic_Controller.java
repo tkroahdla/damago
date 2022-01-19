@@ -12,6 +12,44 @@ public class Logic_Controller {
 	DamaDAO dama = new DamaDAO();
 	// System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
 
+	public DamaDTO expCheck(DamaDTO vo) {
+		if (vo.getExp() > 99) {
+			vo.setExp(vo.getExp() % 100);
+			vo.setLevel(vo.getLevel() + 1);
+		}
+		return vo;
+	}
+	
+	public DamaDTO energyCheck(DamaDTO vo) {
+		if(vo.getEnergy()< -50) {
+			System.out.println(vo.getNick()+"(은)는 움직이기 힘들어한다... ");
+		}
+		else if(vo.getEnergy()< -70) {
+			System.out.println(vo.getNick()+"(은)는 축 처져있다...");
+		}
+		else if(vo.getEnergy()< -90) {
+			System.out.println(vo.getNick()+"(은)는 힘이 없다...");
+		}
+		else if (vo.getEnergy() < -99) {
+			vo.setEnergy(-999);
+			System.out.println(vo.getNick()+"(은)는 숨을 쉬지 않는다...");
+		}
+		return vo;
+	}
+	
+	public boolean deathCheck(DamaDTO vo) {
+		if(vo.getEnergy()==-999) return true;
+		
+		return false;
+	}
+	
+	
+	
+	public DamaDTO dama_death(DamaDTO vo) {
+		return vo;
+		
+	}
+
 	public DamaDTO expPlus(DamaDTO vo) { // 경험치 증가
 		vo.setExp(vo.getExp() + 10);
 		return vo;
@@ -41,13 +79,14 @@ public class Logic_Controller {
 		return a;
 	}
 
-	public DamaDTO sel_need(DamaDTO vo, int needs) {  //매개인자로 다마 객체와, 욕망 인덱스번호 받음. 여기서 needs는 밖에서 need메서드 호출하면 int가 나오는데 그것임
+	public DamaDTO sel_need(DamaDTO vo, int needs) { // 매개인자로 다마 객체와, 욕망 인덱스번호 받음. 여기서 needs는 밖에서 need메서드 호출하면 int가 나오는데
+														// 그것임
 		// int need = dama.DamaNeeds();
 		System.out.println("스테이트는 : " + vo.getState());
 		int input = getNumInput("무엇을 해줄까요??");
 		if (input == 6) { // 종료인 경우가 우선순위가 될 수 있도록 배치 // 종료인게 우선순위가 먼저여야 해서,, 그 다음 우선순위는 욕망 해결
 			vo.setStop(true); // 다마고치 필드에 stop이라고 값을 정의했어요,
-			return vo;	// 종료누르면 트루로 바꾸고 반환
+			return vo; // 종료누르면 트루로 바꾸고 반환
 		}
 		if (vo.getState() == 1) { // 이건 getstate가 1일때. 왜냐하면 초기값이 0이라서 1인경우는 정상작동하는걸루..
 			if (input == 1) {
@@ -73,13 +112,13 @@ public class Logic_Controller {
 				System.out.println("씻겨주기(에너지+30)");
 				energyplus(vo);
 				// cleaning(vo);
-			}  else {
+			} else {
 				System.out.println("잘못된 입력이에요.");
 			}
 			return vo;
 		}
 
-		if (needs + 1 == input && vo.getState() == 0) { //이건 욕망을 풀어주는 번호 눌럿을때 && 그리구 state상태가 0일때 0이라는건 욕망이 있다는뜻!
+		if (needs + 1 == input && vo.getState() == 0) { // 이건 욕망을 풀어주는 번호 눌럿을때 && 그리구 state상태가 0일때 0이라는건 욕망이 있다는뜻!
 			System.out.println(vo.getNick() + "(이)가 만족합니다...");
 			if (input == 1) {
 				System.out.println("밥먹이기(에너지+30) 경험치 없음.");

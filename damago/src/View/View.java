@@ -48,19 +48,23 @@ public class View {
 							dama.insertDama(login);
 
 						} else if (dama_menu == 2) { // 관리
-							System.out.println("===== 내 다마고찌 =====");
+							
 							sel_list = dama.selectDama(login);// 리스트만 존재함 출력해야 확인가능
 							if(sel_list.size() ==0) {
 								System.out.println("관리 할 다마고치가 없어요!! \n다마고치를 등록해주세요..");
-								break;
 							}
-							sel_list = dama.selectDama(login); // 리스트만 존재함 출력해야 확인가능
+							else {
+								System.out.println("===== 내 다마고찌 =====");
 							for (int i = 0; i < sel_list.size(); i++) {
 								System.out.println("\n---------" + (i + 1) + "번 다마고치"
 										+ "---------");
 								System.out.println(sel_list.get(i).toString());
 							}
 							DamaDTO sel_dama = dama.select(sel_list);
+							if(lc.deathCheck(sel_dama)) {
+								System.out.println("사망한 다마고치에요..");
+								System.out.println("다시 선택해주세요...");
+							}
 							System.out.println();
 
 							int needs = lc.DamaNeeds(); // needs에 욕망 인덱스 저장..
@@ -77,7 +81,10 @@ public class View {
 								if(sel_dama.isStop()) {
 									break; //뒤로가기.
 								}
-								//dama.DamaUpdate(sel_dama); // column.. energy, exp는 2자리 number 그렇다면.. 에너지는 더이상 차지않도록하고 .. 경험치는 바로 레벨로 전환될수잇도록.
+								lc.energyCheck(sel_dama);
+								lc.expCheck(sel_dama);
+								dama.DamaUpdate(sel_dama); // column.. energy, exp는 2자리 number 그렇다면.. 에너지는 더이상 차지않도록하고 .. 경험치는 바로 레벨로 전환될수잇도록.
+							}
 							}
 						} else if (dama_menu == 3) {// 랭킹
 							System.out.println("===== 다마고찌 랭킹 =====");

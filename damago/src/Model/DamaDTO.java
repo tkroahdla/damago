@@ -15,7 +15,8 @@ public class DamaDTO {
 	private int cleaning=100;
 	private int state;
 	private boolean stop;
-
+	
+	
 	public DamaDTO(String nick, String type, int exp, int level, int energy, String id, Date date) {
 		super();// 부모클래스의 생성자 호출 (기본생성자)
 		this.nick = nick;
@@ -30,6 +31,10 @@ public class DamaDTO {
 	
 	}
 	
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 	public boolean isStop() {
 		return stop;
 	}
