@@ -27,7 +27,7 @@ public class DamaDTO {
 		this.date = date;
 		this.state= 0;
 		this.stop= false;
-		
+	
 	}
 	
 	public boolean isStop() {

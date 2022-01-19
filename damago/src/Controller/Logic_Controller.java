@@ -45,7 +45,10 @@ public class Logic_Controller {
 		// int need = dama.DamaNeeds();
 		System.out.println("스테이트는 : " + vo.getState());
 		int input = getNumInput("무엇을 해줄까요??");
-
+		if (input == 6) { // 종료인 경우가 우선순위가 될 수 있도록 배치
+			vo.setStop(true);
+			return vo;
+		}
 		if (vo.getState() == 1) {
 			if (input == 1) {
 				System.out.println("밥먹이기(에너지+30)");
@@ -70,10 +73,7 @@ public class Logic_Controller {
 				System.out.println("씻겨주기(에너지+30)");
 				energyplus(vo);
 				// cleaning(vo);
-			} else if (input == 6) {
-				vo.setStop(true);
-				return vo;
-			} else {
+			}  else {
 				System.out.println("잘못된 입력이에요.");
 			}
 			return vo;
