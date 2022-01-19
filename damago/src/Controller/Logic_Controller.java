@@ -43,7 +43,6 @@ public class Logic_Controller {
 		if (vo.getEnergy() < -99) {
 			System.out.println(vo.getNick()+"(은)는 숨을 쉬지 않는다...");
 			vo.setEnergy(999);
-			//왜 다른것도 같이 바뀌지 
 		}
 		return vo;
 	}
