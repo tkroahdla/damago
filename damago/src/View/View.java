@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Model.DamaDAO;
-import Model.DamaVO;
+import Model.DamaDTO;
 import Model.MemberDAO;
 
 public class View {
 
 	public static void main(String[] args) {
-		ArrayList<DamaVO> sel_list = null;
-		ArrayList<DamaVO> rank_list;
+		ArrayList<DamaDTO> sel_list = null;
+		ArrayList<DamaDTO> rank_list;
 		String id = null;
 		int pw = 0;
 		DamaDAO dama = new DamaDAO();
@@ -55,17 +55,17 @@ public class View {
 							for (int i = 0; i < sel_list.size(); i++) {
 								System.out.println((i + 1) + "번" + sel_list.get(i).toString());
 							}
-							DamaVO sel_dama = dama.select(sel_list);
+							DamaDTO sel_dama = dama.select(sel_list);
 							System.out.println();
 							String needs = dama.DamaNeeds();
 							while (true) {// 키우기 그만할때 까지
 								System.out.println("1.밥먹이기\\n2.잠재우기\\n3.놀아주기\\n4.운동하기\\n5.뒤로가기");
-
+								
 							}
 						} else if (dama_menu == 3) {// 랭킹
 							System.out.println("===== 다마고찌 랭킹 =====");
 							rank_list = dama.DamaRank(); // 리스트만 존재함 출력해야 확인가능
-							for (DamaVO vo : rank_list) {
+							for (DamaDTO vo : rank_list) {
 								System.out.println(vo.toString());
 							}
 						} else {
@@ -217,4 +217,5 @@ public class View {
 		System.out.println("   `--'   `--`--'`--`--`--' `--`--'.`-  /  `---'   `--'   `---'`--' `--'`--'    ");
 		System.out.println("                                   `---'                                        ");
 	}
+	
 }

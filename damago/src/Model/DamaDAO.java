@@ -91,8 +91,8 @@ public class DamaDAO {
 	}
 
 	// 전체 사용자의 다마고치 출력(랭킹용)
-	public ArrayList<DamaVO> DamaRank() {
-		ArrayList<DamaVO> rank_list = new ArrayList<DamaVO>();
+	public ArrayList<DamaDTO> DamaRank() {
+		ArrayList<DamaDTO> rank_list = new ArrayList<DamaDTO>();
 
 		try {
 			connect();
@@ -114,7 +114,7 @@ public class DamaDAO {
 				//System.out.println(date);
 				String needs = rs.getString("needs");
 
-				rank_list.add(new DamaVO(nick, type, exp, level, energy, id, date));
+				rank_list.add(new DamaDTO(nick, type, exp, level, energy, id, date));
 			}
 
 		} catch (Exception e) {
@@ -126,8 +126,8 @@ public class DamaDAO {
 	}
 
 	// 로그인한 사람 다마고치 출력
-	public ArrayList<DamaVO> selectDama(String id) {
-		ArrayList<DamaVO> dama_list = new ArrayList<DamaVO>();
+	public ArrayList<DamaDTO> selectDama(String id) {
+		ArrayList<DamaDTO> dama_list = new ArrayList<DamaDTO>();
 
 		try {
 			connect();
@@ -159,7 +159,7 @@ public class DamaDAO {
 
 				// 위에서 읽어온 값들로 초기화시켜 생성한 DamaVO 객체의 참조값을
 				// ArrayList에 추가
-				dama_list.add(new DamaVO(nick, type, exp, level, energy, id, date));
+				dama_list.add(new DamaDTO(nick, type, exp, level, energy, id, date));
 			}
 
 		} catch (Exception e) {
@@ -171,13 +171,13 @@ public class DamaDAO {
 		return dama_list;
 	}
 
-	public DamaVO select(ArrayList<DamaVO> list) { // 다마고치 선택 후 VO객체 반환
+	public DamaDTO select(ArrayList<DamaDTO> list) { // 다마고치 선택 후 VO객체 반환
 		int input = getNumInput(" 선택할 다마고치 번호 :");
 
 		return list.get(input - 1); // 리스트는 0부터니까 -1
 	}
 
-	public void insertNeeds(DamaVO vo) {
+	public void insertNeeds(DamaDTO vo) {
 
 	}
 
