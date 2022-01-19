@@ -53,14 +53,12 @@ public class MemberDAO {
 		}
 	}
 
-	public String Login() {
+	public String Login(String id,int pw) {
 		try {
 			connect();
 
 			String SQL = "Select id, password From user_info where id = ?";
 
-			String id = getStrInput("ID :  ");
-			int pw = getNumInput("PASSWORD :  ");
 			pst = conn.prepareStatement(SQL);
 			pst.setString(1, id);
 
@@ -96,7 +94,7 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				String dt = rs.getString(1);
-				System.out.println("최종 접속시간 : "+ dt);
+				System.out.println("마지막 접속시간 : "+ dt);
 				
 			} 
 		} catch (Exception e) {
@@ -118,10 +116,10 @@ public class MemberDAO {
 
 			int cnt = pst.executeUpdate(); // 매개변수없다. 매개변수로 sql을 넣어놨어요..(sql)이렇게.. 자동으로 넣어주길래 엔터쳐버렷네여
 			if (cnt > 0) {
-				System.out.println("최종접속날짜 삽입 성공");
+				//System.out.println("최종접속날짜 삽입 성공");
 			}
 			else {
-				System.out.println("최종접속날짜 삽입 실패");
+				//System.out.println("최종접속날짜 삽입 실패");
 			}
 		
 		} catch (Exception e) {
@@ -138,7 +136,7 @@ public class MemberDAO {
 		boolean check = false;
 		try {
 			connect();
-			String sql = "insert into user_info values (?,?)";
+			String sql = "insert into user_info values (?,?,sysdate)";
 
 			pst = conn.prepareStatement(sql);
 

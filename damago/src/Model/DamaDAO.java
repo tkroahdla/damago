@@ -30,12 +30,9 @@ public class DamaDAO {
 	}
 
 	public void close() {
-		// 객체들 마무리(Connection, PreparedStatement, ResultSet)
 		try {
-			// 객체가 생겼다 = null이 아니다
 			if (rs != null) {
 				rs.close(); // selectStds(), selectOneStd()에서만 사용하는 객체
-				// ResultSet 객체가 생성되었을 때만 호출 가능한 메소드
 			}
 			if (pst != null) {
 				pst.close();
@@ -48,22 +45,21 @@ public class DamaDAO {
 		}
 	}
 
-	// 사용자가 입력한 값을 DAMA에 삽입(다마고치 등록)
-	public boolean insertDama(String id) {
+	public boolean insertDama(String id,String nick,int type) {
 		boolean check = false;
 		try {
 			connect();
 			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sysdate, ?)";
-			String nick = getStrInput(" 다마고치의 별명을 입력해주세요! : ");
-			String[] t = {"동글이","네모","세모"};
-			System.out.println("[1]동글이 [2]네모 [3]세모");
-			int type = getNumInput(" 다마고치의 종류를 선택해주세요! : ");
+		//	String nick = getStrInput(" 다마고치의 별명을 입력해주세요! : ");
+			String[] t = {"아구몬","파피몬","팔몬"};
+			//System.out.println("[1]동글이 [2]네모 [3]세모");
+			//int type = getNumInput(" 다마고치의 종류를 선택해주세요! : ");
 
 			pst = conn.prepareStatement(sql);
 
 			int exp = 0;
 			int level = 1;
-			int energy = 0;
+			int energy = 40;
 
 			pst.setString(1, nick);
 			pst.setString(2, t[type-1]);
@@ -77,10 +73,8 @@ public class DamaDAO {
 
 			if (cnt > 0) { // 추가 성공
 				check = true;
-				System.out.println("다마고치 등록 완료!");
 			} else { // 추가 실패
 				check = false;
-				System.out.println("다마고치 등록 실패...");
 			}
 
 		} catch (Exception e) {
@@ -92,14 +86,13 @@ public class DamaDAO {
 		return check;
 	}
 
-	// 전체 사용자의 다마고치 출력(랭킹용)
 	public ArrayList<DamaDTO> DamaRank() {
 		ArrayList<DamaDTO> rank_list = new ArrayList<DamaDTO>();
 
 		try {
 			connect();
 
-			String sql = "select * from dama";
+			String sql = "select * from dama order by leb desc,exp desc";
 
 			pst = conn.prepareStatement(sql);
 
@@ -115,7 +108,6 @@ public class DamaDAO {
 				Date date = rs.getDate(7);
 				// System.out.println(date);
 				String needs = rs.getString("needs");
-
 				rank_list.add(new DamaDTO(nick, type, exp, level, energy, id, date));
 			}
 
@@ -134,23 +126,14 @@ public class DamaDAO {
 		try {
 			connect();
 
-			// 3. 실행할 SQL문 정의
 			String sql = "select * from dama where id = ?";
 
-			// 4. SQL구문 실행 준비 객체(PreparedStatement) 생성
-			// prepareStatement(정의할 sql);
 			pst = conn.prepareStatement(sql);
 
-			// 바인드 변수 채우기
 			pst.setString(1, id);
-			// 5. sql문을 실행하고 결과 처리
-			// executeQuery : select -> 검색(table상에 변화가 일어나지 않음)
-			// 반환타입 : ResultSet이라는 객체를 반환
 			rs = pst.executeQuery();
 
-			// dama 테이블의 값을 읽어서 출력
 			while (rs.next()) {
-				// int num = rs.getInt(1); // 커서가 가리키고 있는 행의 첫번째 column값을 읽어옴
 				String nick = rs.getString("nick");
 				String type = rs.getString("type");
 				int level = rs.getInt("leb");
@@ -162,8 +145,6 @@ public class DamaDAO {
 
 				Date date = rs.getDate(7);
 
-				// 위에서 읽어온 값들로 초기화시켜 생성한 DamaVO 객체의 참조값을
-				// ArrayList에 추가
 				dama_list.add(new DamaDTO(nick, type, exp, level, energy, id, date));
 			}
 
@@ -176,17 +157,17 @@ public class DamaDAO {
 		return dama_list;
 	}
 
-	public DamaDTO select(ArrayList<DamaDTO> list) { // 다마고치 선택 후 VO객체 반환
-		int input = getNumInput(" 어떤 다마고치를 선택할까요? :");
+	public DamaDTO select(ArrayList<DamaDTO> list,int input) { // 다마고치 선택 후 VO객체 반환
+		
 		return list.get(input - 1); // 리스트는 0부터니까 -1
 	}
 	
-	public boolean deleteDama() {
+	public boolean deleteDama(String nick) {
 
 	      boolean check = false;
 
 	      try {
-	    	 String nick =getStrInput("삭제할 다마고치의 별명을 입력해주세요! : ");
+	    	 //String nick =getStrInput("삭제할 다마고치의 별명을 입력해주세요! : ");
 	         connect();
 
 	         String sql = "delete from dama where nick = ?";
@@ -203,10 +184,6 @@ public class DamaDAO {
 
 	         if (cnt > 0) { // 변경 성공
 	            check = true;
-	            System.out.println("다마고치 삭제 완료!");
-	         }
-	         else {
-	        	 System.out.println("다마고치 삭제 실패...");
 	         }
 
 	      } catch (Exception e) {

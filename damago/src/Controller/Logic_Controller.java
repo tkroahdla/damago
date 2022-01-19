@@ -26,7 +26,7 @@ public class Logic_Controller {
 		return vo;
 	}
 	
-	public DamaDTO energyCheck(DamaDTO vo) {
+	public void energyCheck(DamaDTO vo) {
 		if(vo.getEnergy()>100) {
 			System.out.println("더 이상 에너지를 채울 수 없어요!");
 			vo.setEnergy(100);
@@ -34,27 +34,49 @@ public class Logic_Controller {
 		if(vo.getEnergy()< -50) {
 			System.out.println(vo.getNick()+"(이)의 움직임이 조금 느려진 것 같다!");
 		}
-		if(vo.getEnergy()< -70) {
+		else if(vo.getEnergy()< -70) {
 			System.out.println(vo.getNick()+"(은)는 왠지 기운이 없어 보인다!");
 		}
-		if(vo.getEnergy()< -90) {
+		else if(vo.getEnergy()< -90) {
 			System.out.println(vo.getNick()+"(은)는 눈에 띄게 힘이 없어 보인다!");
 		}
-		if (vo.getEnergy() < -99) {
+		else if (vo.getEnergy() < -99) {
 			System.out.println(vo.getNick()+"(이)가 더 이상 움직이지 않는다...");
 			vo.setEnergy(999);
 		}
-		return vo;
+	}
+	
+	public void cleanCheck(DamaDTO vo) {
+		if(vo.getCleaning()>100) {
+			System.out.println("더 이상 깨끗해 질 수 없어요!");
+			vo.setCleaning(100);
+		}
+		if(vo.getCleaning()< 50) {
+			System.out.println(vo.getNick()+"(은)는 정신이 혼미해진다!");
+		}
+		else if(vo.getCleaning()< 70) {
+			System.out.println(vo.getNick()+"(은)는 어디선가 악취를 느꼈다!");
+		}
+		else if(vo.getCleaning()< 90) {
+			System.out.println(vo.getNick()+"(은)는 이상한 냄새를 느끼기 시작했다!");
+		}
+		else if (vo.getCleaning() < 99) {
+			System.out.println(vo.getNick()+"(은)는 코를 킁킁 거린다!");
+		}
 	}
 	
 
 	public DamaDTO expPlus(DamaDTO vo) { // 경험치 증가
-		vo.setExp(vo.getExp() + 10);
+		vo.setExp(vo.getExp() + 10 + vo.getCleaning()/10);
 		return vo;
 	}
 
-	public DamaDTO cleaning(DamaDTO vo) { // 청결도 감소
+	public DamaDTO cleaningMinus(DamaDTO vo) { // 청결도 감소
 		vo.setCleaning(vo.getCleaning() - 10);
+		return vo;
+	}
+	public DamaDTO cleaningPlus(DamaDTO vo) { // 청결도 감소
+		vo.setCleaning(vo.getCleaning() + 30);
 		return vo;
 	}
 
@@ -80,7 +102,7 @@ public class Logic_Controller {
 	public DamaDTO sel_need(DamaDTO vo, int needs) { // 매개인자로 다마 객체와, 욕망 인덱스번호 받음. 여기서 needs는 밖에서 need메서드 호출하면 int가 나오는데
 														// 그것임
 		// int need = dama.DamaNeeds();
-		System.out.println("스테이트는 : " + vo.getState());
+	//	System.out.println("스테이트는 : " + vo.getState());
 		int input = getNumInput("무엇을 할까? ");
 		if (input == 6) { // 종료인 경우가 우선순위가 될 수 있도록 배치 // 종료인게 우선순위가 먼저여야 해서,, 그 다음 우선순위는 욕망 해결
 			vo.setStop(true); // 다마고치 필드에 stop이라고 값을 정의했어요,
@@ -91,25 +113,24 @@ public class Logic_Controller {
 				System.out.println("맛있는 밥을 먹었다!(에너지+30)");
 				energyplus(vo);
 				expPlus(vo);
-				cleaning(vo);
+				cleaningMinus(vo);
 			} else if (input == 2) {
 				System.out.println("쿨쿨... 푹 자고 일어났다!(에너지+30)");
 				energyplus(vo);
-				cleaning(vo);
 			} else if (input == 3) {
 				System.out.println("데굴데굴... 재미있게 놀았다!(에너지-10)");
 				energyminus(vo);
 				expPlus(vo);
-				cleaning(vo);
+				cleaningMinus(vo);
 			} else if (input == 4) {
 				System.out.println("으쌰으쌰... 열심히 운동했다!(에너지-10)");
 				energyminus(vo);
 				expPlus(vo);
-				cleaning(vo);
+				cleaningMinus(vo);
 			} else if (input == 5) {
 				System.out.println("뽀드득뽀드득... 깨끗해졌다!(에너지+30)");
 				energyplus(vo);
-				// cleaning(vo);
+				cleaningPlus(vo);
 			} else {
 				System.out.println("올바른 선택지를 선택해주세요!");
 			}
@@ -119,28 +140,25 @@ public class Logic_Controller {
 		if (needs + 1 == input && vo.getState() == 0) { // 이건 욕망을 풀어주는 번호 눌럿을때 && 그리구 state상태가 0일때 0이라는건 욕망이 있다는뜻!
 			System.out.println(vo.getNick() + "(이)가 만족한 것 같다!");
 			if (input == 1) {
-				System.out.println("맛있는 밥을 먹었다!(에너지+30) 경험치 없음.");
+				System.out.println("맛있는 밥을 먹었다!(에너지+30) (경험치는 이 다음부터!)");
 				energyplus(vo);
-				// expPlus(vo);
-				cleaning(vo);
+				cleaningPlus(vo);
 			} else if (input == 2) {
-				System.out.println("쿨쿨... 푹 자고 일어났다!(에너지+30) 경험치 없음.");
+				System.out.println("쿨쿨... 푹 자고 일어났다!(에너지+30) (경험치는 이 다음부터!)");
 				energyplus(vo);
-				cleaning(vo);
 			} else if (input == 3) {
-				System.out.println("데굴데굴... 재미있게 놀았다!(에너지-10) 경험치 없음.");
+				System.out.println("데굴데굴... 재미있게 놀았다!(에너지-10) (경험치는 이 다음부터!)");
 				energyminus(vo);
-				// expPlus(vo);
-				cleaning(vo);
+				cleaningMinus(vo);
 			} else if (input == 4) {
-				System.out.println("으쌰으쌰... 열심히 운동했다!(에너지-10) 경험치 없음.");
+				System.out.println("으쌰으쌰... 열심히 운동했다!(에너지-10) (경험치는 이 다음부터!)");
 				energyminus(vo);
 				// expPlus(vo);
-				cleaning(vo);
+				cleaningMinus(vo);
 			} else if (input == 5) {
-				System.out.println("뽀드득뽀드득... 깨끗해졌다!(에너지+30) 경험치 없음.");
+				System.out.println("뽀드득뽀드득... 깨끗해졌다!(에너지+30) (경험치는 이 다음부터!)");
 				energyplus(vo);
-				// cleaning(vo);
+				cleaningPlus(vo);
 			} else if (input == 6) {
 				vo.setStop(true);
 				return vo;

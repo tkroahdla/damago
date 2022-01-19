@@ -12,7 +12,7 @@ public class DamaDTO {
 	private int energy;// 에너지
 	private String id;// 아이디
 	private Date date;// 마지막 접속날짜
-	private int cleaning=100;
+	private int cleaning;
 	private int state;
 	private boolean stop;
 	
@@ -28,6 +28,7 @@ public class DamaDTO {
 		this.date = date;
 		this.state= 0;
 		this.stop= false;
+		this.cleaning=100;
 	
 	}
 	
@@ -98,8 +99,8 @@ public class DamaDTO {
 
 	@Override
 	public String toString() {
-		return "레벨 : " + level + "\n이름 : " + nick + "\n사용자 : " + id + "\n타입  : " + type + "\n경험치 : " + exp
-	            + "\n에너지 : " + energy + "\n생성일 : " + date + "\n---------------------------";
+		return  "사용자 : " + id + "\n이름 : " + nick + "\n레벨 : " + level +"\n경험치 : " + exp+  "\n타입  : " + type + 
+	             "\n에너지 : " + energy + "\n생성일 : " + date + "\n=============================";
 	}
 
 	
