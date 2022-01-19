@@ -55,7 +55,9 @@ public class DamaDAO {
 			connect();
 			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sysdate, ?)";
 			String nick = getStrInput(" 닉네임을 적어주세요 : ");
-			String type = getStrInput(" 타입을 적어주세요  : ");
+			String[] t = {"동글이","네모","세모"};
+			System.out.println("[1]동글이 [2]네모 [3]세모");
+			int type = getNumInput(" 타입을 골라주세요  : ");
 
 			pst = conn.prepareStatement(sql);
 
@@ -64,7 +66,7 @@ public class DamaDAO {
 			int energy = 0;
 
 			pst.setString(1, nick);
-			pst.setString(2, type);
+			pst.setString(2, t[type-1]);
 			pst.setInt(3, exp);
 			pst.setInt(4, level);
 			pst.setInt(5, energy);
