@@ -54,17 +54,9 @@ public class DamaDAO {
 		try {
 			connect();
 			String sql = "insert into DAMA values(?, ?, ?, ?, ?, ?,sysdate, ?)";
-<<<<<<< HEAD
 			String nick = getStrInput(" 닉네임을 적어주세요 : ");
 			String type = getStrInput(" 타입을 적어주세요  : ");
 		
-=======
-			String nick = getStrInput("닉네임을 적어주세요 : ");
-			String type = getStrInput("타입을 적어주세요  : ");
-			// type이 varchar2(3)이라 엄청 작다 주의해서 넣자.
-			// 이 문구 발견한다면 크기좀 늘려주세요
-			// 밤이라 db서버가 꺼져있네요.
->>>>>>> branch 'master' of https://github.com/tkroahdla/damago.git
 			pst = conn.prepareStatement(sql);
 
 			int exp = 0;
