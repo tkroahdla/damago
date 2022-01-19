@@ -181,7 +181,39 @@ public class DamaDAO {
 		if(list.get(input - 1).getEnergy()==-999) return null;
 		return list.get(input - 1); // 리스트는 0부터니까 -1
 	}
+	
+	public boolean deleteDama() {
 
+	      boolean check = false;
+
+	      try {
+	    	 String nick =getStrInput("삭제할 다마고치의 닉네임을 입력하세요 : ");
+	         connect();
+
+	         String sql = "delete from dama where nic = ?";
+
+	         // SQL구문 실행 준비 객체(PreparedStatement) 생성
+	         // prepareStatement(정의할 sql);
+	         pst = conn.prepareStatement(sql);
+
+	         // 바인드 변수
+	         pst.setString(1, nick); 
+	         // num <- view에서 int num = sc.nextInt();로 번호 넘겨야함
+
+	         int cnt = pst.executeUpdate();
+
+	         if (cnt > 0) { // 변경 성공
+	            check = true;
+	         }
+
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return check;
+	   }
+	
 	public boolean DamaUpdate(DamaDTO vo) { // 업데이트해야하는것이 무엇인가. 경험치 레벨 에너지 업데이트해야함
 		boolean check = false;
 		try {
